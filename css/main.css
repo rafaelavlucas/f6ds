@@ -1,0 +1,386 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 0;
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
+  color: inherit;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+*:focus {
+  outline: 0;
+}
+
+* input {
+  background-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100vw;
+  font-family: "Roboto", sans-serif;
+  background: white;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.wrapper {
+  max-width: 1440px;
+  margin: 80px 5vw;
+}
+
+.ds {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  grid-gap: 40px;
+}
+
+.ds__item {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  min-height: 320px;
+  position: relative;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-radius: 16px;
+  overflow: hidden;
+  -webkit-box-shadow: -24px -24px 50px -24px rgba(0, 0, 0, 0.3);
+          box-shadow: -24px -24px 50px -24px rgba(0, 0, 0, 0.3);
+}
+
+.ds__thumb {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  width: calc(100% - 24px);
+  height: calc(100% - 80px);
+  position: absolute;
+  bottom: 0px;
+  left: 24px;
+  border-radius: 16px;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.ds__thumb img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+}
+
+.ds__thumb:before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.05);
+  position: absolute;
+  opacity: 1;
+  z-index: 1;
+}
+
+.ds__title {
+  padding: 24px;
+  z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: black;
+  font-size: 20px;
+  font-weight: normal;
+  z-index: 2;
+}
+
+.ds__color {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  z-index: -1;
+  border-radius: 16px;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+}
+
+.ds__details {
+  z-index: 2;
+  opacity: 0;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+}
+
+.ds__detailsContent {
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  margin: 24px 24px;
+  padding: 16px;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.ds__detailsContent input {
+  opacity: 0;
+  position: absolute;
+  cursor: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  z-index: -1;
+}
+
+.ds__copyClipboard {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 8px 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  opacity: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  visibility: hidden;
+  -webkit-transform: translateY(8px);
+          transform: translateY(8px);
+  border-radius: 4px;
+  -webkit-transition: all 0.3s cubic-bezier(0.25, 0.1, 0.11, 1.45);
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.11, 1.45);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ds__copyClipboard.show {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.ds__detail--title {
+  font-weight: bold;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  margin-right: 8px;
+}
+
+.ds__detail--text {
+  padding: 0 4px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.ds__detail--text:hover, .ds__detail--text.selected {
+  background-color: white;
+  color: #2e2e2e;
+}
+
+.ds__info {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.ds__info:last-child {
+  margin-bottom: 0px;
+}
+
+.ds__tools {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  color: black;
+  opacity: 1;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: white;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  height: 56px;
+  overflow: hidden;
+}
+
+.ds__toolName {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  position: absolute;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-transform: translateY(200%);
+          transform: translateY(200%);
+  text-transform: capitalize;
+  margin-left: 32px;
+}
+
+.ds__toolName:before {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  left: -32px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.ds__toolName.axure:before {
+  background-image: url("/assets/axure.svg");
+}
+
+.ds__toolName.figma:before {
+  background-image: url("/assets/figma.svg");
+}
+
+.ds__toolName.invision:before {
+  background-image: url("/assets/invision.svg");
+}
+
+.ds__toolName.zeplin:before {
+  background-image: url("/assets/zeplin.svg");
+}
+
+.ds__toolTitle {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
+}
+
+.ds__toolLink {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+.ds__toolLink:hover {
+  background-color: #e3e3e3;
+}
+
+.ds__toolLink:hover .ds__toolTitle {
+  -webkit-transform: translateY(-200%);
+          transform: translateY(-200%);
+}
+
+.ds__toolLink:hover .ds__toolName {
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
+}
+
+.ds .active {
+  -webkit-box-shadow: 0px 0px 50px -16px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 0px 50px -16px rgba(0, 0, 0, 0.3);
+}
+
+.ds .active .ds__color {
+  opacity: 0.8;
+}
+
+.ds .active .ds__title {
+  color: white;
+}
+
+.ds .active .ds__thumb {
+  width: 100%;
+  height: 100%;
+  bottom: 0px;
+  left: 0px;
+}
+
+.ds .active .ds__details {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.link {
+  position: relative;
+  font-size: 20px;
+  margin-bottom: 16px;
+  letter-spacing: 0px;
+  font-weight: 500;
+}
+
+.link:before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 24px;
+  right: -32px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("/assets/arrowRight.svg");
+  opacity: 0;
+  -webkit-transform: translateX(-16px);
+          transform: translateX(-16px);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.link:hover:before {
+  opacity: 1;
+  -webkit-transform: translateX(0px);
+          transform: translateX(0px);
+}
+/*# sourceMappingURL=main.css.map */
