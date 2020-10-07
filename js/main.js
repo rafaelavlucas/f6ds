@@ -184,4 +184,32 @@ window.onload = function (e) {
         e.currentTarget.classList.add("active");
     }
 
+    //Dark Mode
+
+    const wrapper = document.querySelector(".wrapper"),
+        toggle = document.querySelector(".header__toggle");
+
+    toggle.addEventListener('click', changeTheme);
+
+    var getTheme = localStorage.getItem('themeDark');
+
+    if (getTheme != "false") {
+        wrapper.dataset.theme = "dark";
+        toggle.classList.add('on');
+        localStorage.setItem('themeDark', true);
+    };
+
+    function changeTheme() {
+        getTheme = localStorage.getItem('themeDark');
+        if (getTheme == "false") {
+            wrapper.dataset.theme = "dark";
+            toggle.classList.add('on');
+            getTheme = localStorage.setItem('themeDark', true);
+        } else {
+            wrapper.dataset.theme = "";
+            toggle.classList.remove('on');
+            getTheme = localStorage.setItem('themeDark', false);
+        }
+    };
+
 }

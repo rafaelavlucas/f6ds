@@ -1,4 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+:root {
+  --bodyBg: #ffffff;
+  --headerBg: #f1f1f1;
+  --f6logo: url("/assets/logo-black.svg");
+  --toggleBg: #fff;
+  --toggleShadow: inset 0px 0px 0px 1px #aeaeae;
+  --toggleBall: #dfdfdf;
+  --toggleText: #3434346d;
+  --iconLinkedin: url("../assets/linkedin-b.svg");
+  --iconDribbble: url("../assets/dribbble-b.svg");
+  --iconCodepen: url("../assets/codepen-b.svg");
+}
+
+[data-theme="dark"] {
+  --bodyBg: #414141;
+  --headerBg: #2b2b2b;
+  --f6logo: url("/assets/logo-white.svg");
+  --toggleBg: #3f3f3f;
+  --toggleShadow: inset 0px 0px 0px 1px #797979;
+  --toggleBall: #F68A39;
+  --toggleText: #7e7e7e;
+  --iconLinkedin: url("../assets/linkedin.svg");
+  --iconDribbble: url("../assets/dribbble.svg");
+  --iconCodepen: url("../assets/codepen.svg");
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -26,17 +52,84 @@ html {
 body {
   width: 100vw;
   font-family: "Roboto", sans-serif;
-  background: white;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
 .wrapper {
-  max-width: 1440px;
-  margin: 80px 5vw;
+  background: var(--bodyBg);
+}
+
+.header {
+  height: 100px;
+  padding: 0 5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: var(--headerBg);
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.header__logo {
+  width: 120px;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: var(--f6logo);
+}
+
+.header__toggle {
+  background-color: var(--toggleBg);
+  cursor: pointer;
+  width: 48px;
+  height: 28px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 30px;
+  position: relative;
+  -webkit-box-shadow: var(--toggleShadow);
+          box-shadow: var(--toggleShadow);
+  z-index: 1;
+}
+
+.header__toggle span {
+  display: block;
+  width: 18px;
+  height: 18px;
+  background: var(--toggleBall);
+  border-radius: 100%;
+  left: 4px;
+  position: absolute;
+  -webkit-transition: all 0.3s cubic-bezier(0.67, 0.39, 0.1, 1.38);
+  transition: all 0.3s cubic-bezier(0.67, 0.39, 0.1, 1.38);
+}
+
+.header__toggle.on span {
+  -webkit-transform: translateX(calc(100% + 4px));
+          transform: translateX(calc(100% + 4px));
+}
+
+.header__toggleText {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--toggleText);
+  margin-right: 8px;
 }
 
 .ds {
+  max-width: 1440px;
+  margin: 80px 5vw;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[3];
@@ -109,26 +202,6 @@ body {
   z-index: 3;
 }
 
-.ds__logo {
-  width: 104px;
-  height: 64px;
-  position: absolute;
-  right: 24px;
-  top: 24px;
-  border-radius: 4px;
-  overflow: hidden;
-  background-color: white;
-  padding: 8px;
-  z-index: -1;
-}
-
-.ds__logo img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
-}
-
 .ds__color {
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
@@ -182,7 +255,7 @@ body {
 .ds__copyClipboard {
   position: absolute;
   right: 16px;
-  top: 50%;
+  top: 16px;
   background-color: rgba(255, 255, 255, 0.2);
   padding: 8px 12px;
   display: -webkit-box;
@@ -214,8 +287,8 @@ body {
 .ds__copyClipboard.show {
   opacity: 1;
   visibility: visible;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
 }
 
 .ds__detail--title {
