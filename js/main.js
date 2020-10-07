@@ -85,6 +85,7 @@ window.onload = function (e) {
         <figure class="ds__thumb"> <img src="${el.thumb}" alt=""></figure>
         <span  class="ds__color" style="background-color:${el.color}"></span>
         <h2 class="ds__title">${el.client}</h2>
+
         <div class="ds__details">
             <div class="ds__detailsContent">
                 <input type="text">
