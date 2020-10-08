@@ -205,21 +205,26 @@ body {
     margin-top: 24px;
 
     &__input {
+        @include transition();
         width: 400px;
         background: var(--inputBg);
         height: 40px;
         padding: 8px 16px;
         border-radius: 8px;
         letter-spacing: 0.5px;
+        border: 1px solid transparent;
+
 
         &::placeholder {
             @include transition();
         }
 
         &:focus {
+            border: 1px solid #EE7D4C;
+
             &::placeholder {
                 opacity: 0;
-                transform: translateX(-100%);
+                transform: translateX(-20%);
             }
         }
     }

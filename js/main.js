@@ -495,13 +495,9 @@ window.onload = function (e) {
 
         //console.log(filteredProjects);
 
-        const getProjects = [...document.querySelectorAll('.projects__item')].filter(item => {
+        const getId = filteredProjects.map(item => item.id)
 
-            [...filteredProjects].map(element => element.id === item.dataset.id)
-
-        });
-
-
+        const getProjects = [...document.querySelectorAll('.projects__item')].filter(element => getId.indexOf(element.dataset.id) >= 0)
 
         console.log(getProjects);
     });
