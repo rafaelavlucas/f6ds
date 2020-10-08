@@ -12,8 +12,6 @@
     --toggleBall: #ffffff;
     --toggleText: #3434346d;
 
-
-
     --iconLinkedin: url("../assets/linkedin-b.svg");
     --iconDribbble: url("../assets/dribbble-b.svg");
     --iconCodepen: url("../assets/codepen-b.svg");
@@ -49,7 +47,7 @@ $m-01: #EE7D4C;
 $neu-08: #484848;
 $neu-09: #313131;
 
-$maxWidthContent: 1440px;
+$maxWidthContent: 1920px;
 $cubic: cubic-bezier(0.25, 0.1, 0.11, 1.45);
 
 // Breakpoints
@@ -113,10 +111,6 @@ $cubic: cubic-bezier(0.25, 0.1, 0.11, 1.45);
 
     &:focus {
         outline: 0;
-    }
-
-    input {
-        background-color: transparent;
     }
 }
 
@@ -209,13 +203,26 @@ body {
     }
 }
 
-.ds {
+.search {
+    display: flex;
+    justify-content: center;
+
+    &__input {
+        background: white;
+        padding: 8px
+    }
+}
+
+.projects {
+    @include margins;
     $this: &;
     max-width: $maxWidthContent;
-    margin: 80px 5vw;
+    margin: 80px auto;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(410px, 1fr));
     grid-gap: 40px;
+
+
 
     &__item {
         @include transition();
