@@ -356,53 +356,56 @@ window.onload = function (e) {
 
     ];
 
-    projects.forEach(function (el) {
+    function showProjects() {
+        projects.forEach(function (el) {
 
-        let template = `
-        <div class="projects__item" data-id="${el.id}">
-
-        <figure class="projects__thumb" style="background-color:${el.color}"> <img src="${el.thumb}" alt=""></figure>
-        <span  class="projects__color" style="background-color:${el.color}"></span>
-        <h2 class="projects__title">${el.client}</h2>
-
-        <div class="projects__details">
-            <div class="projects__detailsContent">
-                <input type="text" class="inputCopy">
-                <div class="projects__copyClipboard">
-                    copied!
+            let template = `
+            <div class="projects__item" data-id="${el.id}">
+    
+            <figure class="projects__thumb" style="background-color:${el.color}"> <img src="${el.thumb}" alt=""></figure>
+            <span  class="projects__color" style="background-color:${el.color}"></span>
+            <h2 class="projects__title">${el.client}</h2>
+    
+            <div class="projects__details">
+                <div class="projects__detailsContent">
+                    <input type="text" class="inputCopy">
+                    <div class="projects__copyClipboard">
+                        copied!
+                    </div>
+                    <div class="projects__info">
+                        <a class="projects__detail link" href="${el.url}" target="_blank">Stage Link</a>
+                    </div>
+                    <div class="projects__info">
+                        <p class="projects__detail--title user">User:</p>
+                        <p class="projects__detail--text">${el.user}</p>
+    
+                    </div>
+                    <div class="projects__info">
+                        <p class="projects__detail--title pass">Password:</p>
+                        <p class="projects__detail--text">${el.pass}</p>
+                    </div>
                 </div>
-                <div class="projects__info">
-                    <a class="projects__detail link" href="${el.url}" target="_blank">Stage Link</a>
+                <div class="projects__tools">
                 </div>
-                <div class="projects__info">
-                    <p class="projects__detail--title user">User:</p>
-                    <p class="projects__detail--text">${el.user}</p>
-
-                </div>
-                <div class="projects__info">
-                    <p class="projects__detail--title pass">Password:</p>
-                    <p class="projects__detail--text">${el.pass}</p>
-                </div>
-            </div>
-            <div class="projects__tools">
             </div>
         </div>
-    </div>
-    `;
+        `;
 
-        document.querySelector(".projects").insertAdjacentHTML("beforeend", template);
+            document.querySelector(".projects").insertAdjacentHTML("beforeend", template);
 
-        el.tools.forEach(function (tool) {
-            let template2 = `
-            <a class="projects__toolLink" href="${tool.link}">
-                <p class="projects__toolTitle">${tool.title}</p>
-                <p class="projects__toolName ${tool.name}">${tool.name}</p>
-            </a>`;
+            el.tools.forEach(function (tool) {
+                let template2 = `
+                <a class="projects__toolLink" href="${tool.link}">
+                    <p class="projects__toolTitle">${tool.title}</p>
+                    <p class="projects__toolName ${tool.name}">${tool.name}</p>
+                </a>`;
 
-            document.querySelectorAll(".projects__tools")[el.id].insertAdjacentHTML("beforeend", template2);
-        })
-    });
+                document.querySelectorAll(".projects__tools")[el.id].insertAdjacentHTML("beforeend", template2);
+            })
+        });
 
+    }
+    showProjects();
 
 
     // Select and copy User and Password
@@ -439,13 +442,13 @@ window.onload = function (e) {
     }
 
     // Hover Items
-    const itemDs = document.querySelectorAll(".projects__item");
-    itemDs.forEach(function (el) {
-        el.addEventListener("mouseenter", cenas)
+    const projectItem = document.querySelectorAll(".projects__item");
+    projectItem.forEach(function (el) {
+        el.addEventListener("click", showhover)
     });
 
-    function cenas(e) {
-        itemDs.forEach(function (el) {
+    function showhover(e) {
+        projectItem.forEach(function (el) {
             el.classList.remove("active");
         });
 
@@ -483,34 +486,63 @@ window.onload = function (e) {
 
     // Search
 
-    const searchInput = document.getElementById("search");
+    const searchInput = document.getElementById("search"),
+        cleanBtn = document.querySelector('.search__clean'),
+        noResults = document.querySelector('.search__noResults');
 
     searchInput.addEventListener('keyup', function (event) {
         const searchValue = event.target.value;
+        cleanBtn.style.display = "none";
+        noResults.style.display = "none";
 
+        // Filter the projects when type on input
         const filteredProjects = projects.filter(project => {
-            return project.client.includes(searchValue);
+            return project.client.toLowerCase().includes(searchValue);
         });
 
+        // Get the id of the filtered projects
+        const getId = filteredProjects.map(item => item.id);
 
-        //console.log(filteredProjects);
+        const getProjects = [...projectItem].filter(element => getId.indexOf(parseInt(element.dataset.id)) >= 0);
 
-        const getId = filteredProjects.map(item => item.id)
+        // Hide all projects and show the filteres ones
+        projectItem.forEach(function (el) {
+            el.style.display = "none";
+        })
 
-        const getProjects = [...document.querySelectorAll('.projects__item')].filter(element => getId.indexOf(element.dataset.id) >= 0)
+        getProjects.forEach(function (el) {
+            el.style.display = "flex";
+        })
 
-        console.log(getProjects);
+        if (getProjects == 0) {
+            noResults.style.display = "flex";
+        } else {
+            noResults.style.display = "none";
+        }
+
+        if (searchInput.value == "") {
+            cleanBtn.style.display = "none";
+        } else {
+            cleanBtn.style.display = "flex";
+        }
+
+        console.log(getProjects)
+
     });
 
+    // Clean Search
 
-    function clearList() {
+
+
+    cleanBtn.addEventListener('click', cleanResults);
+
+    function cleanResults() {
+        searchInput.value = "";
+        document.querySelector('.projects').innerHTML = "";
+        cleanBtn.style.display = "none";
+        noResults.style.display = "none";
+        showProjects();
 
     }
-
-    function noResults() {
-
-    }
-
-
 
 }
