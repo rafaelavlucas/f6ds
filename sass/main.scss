@@ -2,13 +2,14 @@
 
 :root {
     --bodyBg: #ffffff;
-    --headerBg: #f1f1f1;
+    --headerBg: #e9e9e9;
     --f6logo: url("/assets/logo-black.svg");
-
-
-    --toggleBg: #fff;
-    --toggleShadow: inset 0px 0px 0px 1px #aeaeae;
-    --toggleBall: #dfdfdf;
+    --text: #3e3e3e;
+    --toolsBg: #ffffff;
+    --toolsHover: #e9e9e9;
+    --iconBulb: url("/assets/sun.svg");
+    --toggleBg: #d2d2d2;
+    --toggleBall: #ffffff;
     --toggleText: #3434346d;
 
 
@@ -20,13 +21,16 @@
 }
 
 [data-theme="dark"] {
-    --bodyBg: #414141;
-    --headerBg: #2b2b2b;
+    --bodyBg: #3a3a3a;
+    --headerBg: #2e2e2e;
     --f6logo: url("/assets/logo-white.svg");
-
-    --toggleBg: #3f3f3f;
-    --toggleShadow: inset 0px 0px 0px 1px #797979;
-    --toggleBall: #F68A39;
+    --text: #f1f1f1;
+    --toolsBg: #4b4b4b;
+    --toolsHover: #393939;
+    --iconBulb: url("/assets/moon.svg");
+    --toggleBg: #1d1d1d;
+    --toggleShadow: 0px 0px 10px rgba(black, 0.5);
+    --toggleBall: #606060;
     --toggleText: #7e7e7e;
 
     --iconLinkedin: url("../assets/linkedin.svg");
@@ -79,8 +83,6 @@ $cubic: cubic-bezier(0.25, 0.1, 0.11, 1.45);
     }
 }
 
-
-
 // Mixins for Styles
 @mixin delay {
     @for $i from 1 through 100 {
@@ -94,7 +96,6 @@ $cubic: cubic-bezier(0.25, 0.1, 0.11, 1.45);
     padding-left: 5vw;
     padding-right: 5vw;
 }
-
 
 @mixin transition {
     transition: all 0.4s ease;
@@ -127,14 +128,11 @@ html {
 body {
     width: 100vw;
     font-family: $font;
-
-    transition: all 0.3s ease;
-
-}
-
-.wrapper {
     background: var(--bodyBg);
+    transition: all 0.3s ease;
 }
+
+.wrapper {}
 
 .header {
     height: 100px;
@@ -152,56 +150,69 @@ body {
         background-position: center;
         background-image: var(--f6logo);
     }
+}
 
-    &__toggle {
+.toggle {
+    $this: &;
+    display: flex;
+    align-items: center;
+
+    &__button {
         background-color: var(--toggleBg);
         cursor: pointer;
-        width: 48px;
-        height: 28px;
+        width: 56px;
+        height: 24px;
         display: flex;
         align-items: center;
         border-radius: 30px;
         position: relative;
-        box-shadow: var(--toggleShadow);
         z-index: 1;
 
-
-
         span {
-            display: block;
-            width: 18px;
-            height: 18px;
             background: var(--toggleBall);
             border-radius: 100%;
-            left: 4px;
+            left: 0px;
             position: absolute;
             transition: all 0.3s cubic-bezier(0.67, 0.39, 0.1, 1.38);
+            display: flex;
+            width: 28px;
+            height: 28px;
+            background-size: 22px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: var(--iconBulb);
+            box-shadow: var(--toggleShadow);
 
         }
+    }
 
-        &.on {
-            span {
-                transform: translateX(calc(100% + 4px));
+    &__icon {
+        display: flex;
+        width: 24px;
+        height: 24px;
+        left: -32px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: var(--iconBulb);
+    }
+
+
+    &.on {
+        #{$this} {
+            &__button {
+                span {
+                    transform: translateX(calc(100%));
+                }
             }
         }
     }
-
-    &__toggleText {
-        text-transform: uppercase;
-        font-size: 12px;
-        font-weight: 600;
-        color: var(--toggleText);
-        margin-right: 8px;
-    }
 }
-
-
 
 .ds {
     $this: &;
     max-width: $maxWidthContent;
     margin: 80px 5vw;
-
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 40px;
@@ -252,12 +263,11 @@ body {
         padding: 32px 24px;
         z-index: 1;
         display: flex;
-        color: black;
+        color: var(--text);
         font-size: 20px;
         font-weight: normal;
         z-index: 3;
     }
-
 
     &__color {
         @include transition();
@@ -331,11 +341,39 @@ body {
 
     &__detail {
 
-
         &--title {
             font-weight: bold;
             user-select: none;
-            margin-right: 8px;
+            margin-left: 24px;
+            margin-right: 4px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &:before {
+                content: '';
+                position: absolute;
+                width: 16px;
+                height: 16px;
+                left: -24px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+
+            }
+
+            &.user {
+                &:before {
+                    background-image: url("/assets/user.svg");
+                }
+            }
+
+            &.pass {
+                &:before {
+                    background-image: url("/assets/key.svg");
+                }
+            }
 
         }
 
@@ -343,6 +381,7 @@ body {
             padding: 0 4px;
             cursor: pointer;
             border-radius: 2px;
+
 
             &:hover,
             &.selected {
@@ -364,15 +403,14 @@ body {
 
     &__tools {
         @include transition();
-        color: black;
+        color: var(--text);
         opacity: 1;
         flex-direction: column;
-        background-color: white;
+        background-color: var(--toolsBg);
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         height: 56px;
         overflow: hidden;
-
     }
 
     &__toolName {
@@ -420,21 +458,21 @@ body {
     }
 
     &__toolTitle {
-        @include transition();
+        transition: transform 0.3s ease;
         transform: translateY(0%);
     }
 
     &__toolLink {
-        @include transition();
         position: relative;
         display: flex;
         justify-content: center;
         align-items: center;
         cursor: pointer;
+        transition: transform 0.3s ease, background 0.4s ease;
 
 
         &:hover {
-            background-color: #e3e3e3;
+            background-color: var(--toolsHover);
 
             #{$this} {
                 &__toolTitle {

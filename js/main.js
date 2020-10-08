@@ -56,27 +56,6 @@ window.onload = function (e) {
         },
     ];
 
-    const tools = [{
-            id: 0,
-            name: "Zeplin",
-            icon: "assets/icon2.svg"
-        }, {
-            id: 1,
-            name: "Invision",
-            icon: "assets/icon.svg",
-        },
-        {
-            id: 2,
-            name: "Axure",
-            icon: "assets/icon3.svg",
-        },
-        {
-            id: 3,
-            name: "Figma",
-            icon: "assets/icon3.svg",
-        },
-    ];
-
     ds.forEach(function (el) {
 
         let template = `
@@ -96,12 +75,12 @@ window.onload = function (e) {
                     <a class="ds__detail link" href="" target="_blank">Stage Link</a>
                 </div>
                 <div class="ds__info">
-                    <p class="ds__detail--title">User:</p>
+                    <p class="ds__detail--title user">User:</p>
                     <p class="ds__detail--text">${el.user}</p>
 
                 </div>
                 <div class="ds__info">
-                    <p class="ds__detail--title">Password:</p>
+                    <p class="ds__detail--title pass">Password:</p>
                     <p class="ds__detail--text">${el.pass}</p>
                 </div>
             </div>
@@ -127,12 +106,9 @@ window.onload = function (e) {
     })
 
 
+    // Select and copy User and Password
 
-    // Select and copy source
-
-    const
-
-        text = document.querySelectorAll('.ds__detail--text'),
+    const text = document.querySelectorAll('.ds__detail--text'),
         copyClipboard = document.querySelectorAll('.ds__copyClipboard');
 
     text.forEach(function (element) {
@@ -161,18 +137,11 @@ window.onload = function (e) {
                 el.classList.remove('show');
             }, 1200);
         });
-
-
-
-
     }
 
     // Hover Items
-
-
     const itemDs = document.querySelectorAll(".ds__item");
     itemDs.forEach(function (el) {
-
         el.addEventListener("mouseenter", cenas)
     });
 
@@ -184,17 +153,17 @@ window.onload = function (e) {
         e.currentTarget.classList.add("active");
     }
 
-    //Dark Mode
 
-    const wrapper = document.querySelector(".wrapper"),
-        toggle = document.querySelector(".header__toggle");
+    // Dark Mode
+
+    const body = document.querySelector("body"),
+        toggle = document.querySelector(".toggle");
+    let getTheme = localStorage.getItem('themeDark');
 
     toggle.addEventListener('click', changeTheme);
 
-    var getTheme = localStorage.getItem('themeDark');
-
     if (getTheme != "false") {
-        wrapper.dataset.theme = "dark";
+        body.dataset.theme = "dark";
         toggle.classList.add('on');
         localStorage.setItem('themeDark', true);
     };
@@ -202,11 +171,11 @@ window.onload = function (e) {
     function changeTheme() {
         getTheme = localStorage.getItem('themeDark');
         if (getTheme == "false") {
-            wrapper.dataset.theme = "dark";
+            body.dataset.theme = "dark";
             toggle.classList.add('on');
             getTheme = localStorage.setItem('themeDark', true);
         } else {
-            wrapper.dataset.theme = "";
+            body.dataset.theme = "";
             toggle.classList.remove('on');
             getTheme = localStorage.setItem('themeDark', false);
         }
