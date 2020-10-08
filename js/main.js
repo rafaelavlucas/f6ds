@@ -1,8 +1,6 @@
 window.onload = function (e) {
 
     // Populate Content
-
-
     const projects = [{
             id: 0,
             client: "Energy Digital Platform",
@@ -417,7 +415,6 @@ window.onload = function (e) {
         element.addEventListener('click', selectText);
     });
 
-
     function selectText(event) {
         input = document.querySelector('.inputCopy');
 
@@ -458,6 +455,7 @@ window.onload = function (e) {
 
     // Dark Mode
 
+
     const body = document.querySelector("body"),
         toggle = document.querySelector(".toggle");
     let getTheme = localStorage.getItem('themeDark');
@@ -491,7 +489,7 @@ window.onload = function (e) {
         noResults = document.querySelector('.search__noResults');
 
     searchInput.addEventListener('keyup', function (event) {
-        const searchValue = event.target.value;
+        const searchValue = event.target.value.toLowerCase();
         cleanBtn.style.display = "none";
         noResults.style.display = "none";
 
@@ -532,8 +530,6 @@ window.onload = function (e) {
 
     // Clean Search
 
-
-
     cleanBtn.addEventListener('click', cleanResults);
 
     function cleanResults() {
@@ -542,7 +538,6 @@ window.onload = function (e) {
         cleanBtn.style.display = "none";
         noResults.style.display = "none";
         showProjects();
-
     }
 
 }

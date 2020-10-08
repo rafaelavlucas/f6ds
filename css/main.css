@@ -12,6 +12,7 @@
   --inputBg: #f4f4f4;
   --inputBorder: #e9e9e9;
   --iconClean: url("/assets/close-b.svg");
+  --iconSearch: url("/assets/search-b.svg");
 }
 
 [data-theme="dark"] {
@@ -28,6 +29,7 @@
   --inputBg: #2e2e2e;
   --inputBorder: #5b5b5b;
   --iconClean: url("/assets/close-w.svg");
+  --iconSearch: url("/assets/search-w.svg");
 }
 
 * {
@@ -177,13 +179,27 @@ body {
   position: relative;
 }
 
+.search__content:before {
+  content: '';
+  width: 20px;
+  height: 24px;
+  -webkit-transform: translateX(32px);
+          transform: translateX(32px);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: var(--iconSearch);
+  z-index: 1;
+  opacity: 0.5;
+}
+
 .search__input {
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
   width: 400px;
   background: var(--inputBg);
   height: 40px;
-  padding: 8px 16px;
+  padding: 8px 16px 8px 40px;
   border-radius: 8px;
   letter-spacing: 0.5px;
   border: 1px solid var(--inputBorder);
@@ -217,24 +233,24 @@ body {
 
 .search__input:focus::-webkit-input-placeholder {
   opacity: 0;
-  -webkit-transform: translateX(-20%);
-          transform: translateX(-20%);
+  -webkit-transform: translateX(5%);
+          transform: translateX(5%);
 }
 
 .search__input:focus:-ms-input-placeholder {
   opacity: 0;
-  transform: translateX(-20%);
+  transform: translateX(5%);
 }
 
 .search__input:focus::-ms-input-placeholder {
   opacity: 0;
-  transform: translateX(-20%);
+  transform: translateX(5%);
 }
 
 .search__input:focus::placeholder {
   opacity: 0;
-  -webkit-transform: translateX(-20%);
-          transform: translateX(-20%);
+  -webkit-transform: translateX(5%);
+          transform: translateX(5%);
 }
 
 .search__clean {
@@ -324,10 +340,12 @@ body {
 }
 
 .projects__item:hover {
-  -webkit-box-shadow: 0px 0px 50px -16px rgba(0, 0, 0, 0.3);
-          box-shadow: 0px 0px 50px -16px rgba(0, 0, 0, 0.3);
-  -webkit-transform: translateY(-4px);
-          transform: translateY(-4px);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  -webkit-box-shadow: -10px -10px 30px -20px rgba(0, 0, 0, 0.3);
+          box-shadow: -10px -10px 30px -20px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(-6px);
+          transform: translateY(-6px);
 }
 
 .projects__thumb {
