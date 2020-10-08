@@ -359,7 +359,7 @@ window.onload = function (e) {
     projects.forEach(function (el) {
 
         let template = `
-        <div class="projects__item">
+        <div class="projects__item" data-id="${el.id}">
 
         <figure class="projects__thumb" style="background-color:${el.color}"> <img src="${el.thumb}" alt=""></figure>
         <span  class="projects__color" style="background-color:${el.color}"></span>
@@ -493,12 +493,17 @@ window.onload = function (e) {
         });
 
 
-        console.log(filteredProjects);
+        //console.log(filteredProjects);
+
+        const getProjects = [...document.querySelectorAll('.projects__item')].filter(item => {
+
+            [...filteredProjects].map(element => element.id === item.dataset.id)
+
+        });
 
 
-        //showProjects(filteredProjects);
 
-
+        console.log(getProjects);
     });
 
 

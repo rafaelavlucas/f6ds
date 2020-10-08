@@ -10,11 +10,9 @@
     --iconBulb: url("/assets/sun.svg");
     --toggleBg: #d2d2d2;
     --toggleBall: #ffffff;
-    --toggleText: #3434346d;
+    --inputBg: #e9e9e9;
 
-    --iconLinkedin: url("../assets/linkedin-b.svg");
-    --iconDribbble: url("../assets/dribbble-b.svg");
-    --iconCodepen: url("../assets/codepen-b.svg");
+
 
 }
 
@@ -29,11 +27,9 @@
     --toggleBg: #1d1d1d;
     --toggleShadow: 0px 0px 10px rgba(black, 0.5);
     --toggleBall: #606060;
-    --toggleText: #7e7e7e;
+    --inputBg: #2e2e2e;
 
-    --iconLinkedin: url("../assets/linkedin.svg");
-    --iconDribbble: url("../assets/dribbble.svg");
-    --iconCodepen: url("../assets/codepen.svg");
+
 }
 
 // Fonts
@@ -206,11 +202,29 @@ body {
 .search {
     display: flex;
     justify-content: center;
+    margin-top: 24px;
 
     &__input {
-        background: white;
-        padding: 8px
+        width: 400px;
+        background: var(--inputBg);
+        height: 40px;
+        padding: 8px 16px;
+        border-radius: 8px;
+        letter-spacing: 0.5px;
+
+        &::placeholder {
+            @include transition();
+        }
+
+        &:focus {
+            &::placeholder {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+        }
     }
+
+
 }
 
 .projects {
