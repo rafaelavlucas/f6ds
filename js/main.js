@@ -524,8 +524,6 @@ window.onload = function (e) {
             cleanBtn.style.display = "flex";
         }
 
-        console.log(getProjects)
-
     });
 
     // Clean Search
