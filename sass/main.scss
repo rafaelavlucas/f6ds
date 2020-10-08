@@ -138,13 +138,37 @@ body {
     background-color: var(--headerBg);
     justify-content: space-between;
 
+    @include sm {
+        height: 120px;
+    }
+
     &__logo {
         width: 120px;
-        height: 100%;
+        height: 100px;
+        position: absolute;
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
         background-image: var(--f6logo);
+
+        @include sm {
+            top: 0;
+            width: 100px;
+            height: 70px;
+            //align-self: flex-start;
+        }
+    }
+}
+
+.actions {
+    display: flex;
+
+    justify-content: flex-end;
+    width: 100%;
+
+    @include sm {
+        align-items: flex-end;
+        flex-direction: column-reverse;
     }
 }
 
@@ -152,6 +176,11 @@ body {
     $this: &;
     display: flex;
     align-items: center;
+    margin-left: 40px;
+
+    @include sm {
+        margin-bottom: 16px;
+    }
 
     &__button {
         background-color: var(--toggleBg);
@@ -205,6 +234,103 @@ body {
     }
 }
 
+.drop {
+    @include transition();
+    $this: &;
+    color: var(--text);
+    background: var(--bodyBg);
+    width: 320px;
+    max-width: 320px;
+    height: 40px;
+    z-index: 2;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0px 4px 20px 0px rgba(black, 0.25);
+
+    @include sm {
+        max-width: 400px;
+        width: 100%;
+        align-self: center;
+    }
+
+    &__title {
+        border-radius: 8px;
+        display: flex;
+        height: 40px;
+        align-items: center;
+        padding: 0 24px;
+        position: relative;
+
+        &:before {
+            @include transition();
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            right: 16px;
+
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: url("/assets/arrowDown.svg");
+
+        }
+    }
+
+    &__content {
+        //@include transition();
+        border-radius: 8px;
+        width: 100%;
+        visibility: hidden;
+        opacity: 1;
+        padding-top: 40px;
+        top: 0px;
+        position: absolute;
+        background: var(--bodyBg);
+        z-index: -1;
+        transition: all 0.3s ease;
+    }
+
+    &__item {
+        //@include transition();
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
+        height: 0px;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    &.open {
+        box-shadow: 0px 4px 20px 0px transparent;
+
+        #{$this} {
+            &__title {
+                color: #EE7D4C;
+                box-shadow: 0px 4px 12px 0px rgba(black, 0.07);
+
+                &:before {
+                    transform: rotate(-180deg);
+                }
+            }
+
+            &__content {
+                @include transition();
+                opacity: 1;
+                visibility: visible;
+                box-shadow: 0px 4px 20px 0px rgba(black, 0.25);
+
+            }
+
+            &__item {
+                @include transition();
+                height: 40px;
+                opacity: 1;
+            }
+        }
+    }
+}
+
 .search {
     @include margins();
     display: flex;
@@ -214,16 +340,23 @@ body {
     margin-top: 24px;
 
     &__content {
+        width: 100%;
+        max-width: 400px;
         display: flex;
         justify-content: center;
         align-items: center;
         position: relative;
+        margin: 0 auto;
+
+
 
         &:before {
             content: '';
+            position: absolute;
             width: 20px;
             height: 24px;
-            transform: translateX(32px);
+            left: 16px;
+
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
@@ -235,7 +368,7 @@ body {
 
     &__input {
         @include transition();
-        width: 400px;
+        width: 100%;
         background: var(--inputBg);
         height: 40px;
         padding: 8px 16px 8px 40px;
@@ -244,6 +377,12 @@ body {
         border: 1px solid var(--inputBorder);
         position: relative;
         color: var(--text);
+
+        @include sm {
+            width: 100%;
+            max-width: 400px;
+        }
+
 
         &::placeholder {
 

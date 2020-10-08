@@ -542,4 +542,22 @@ window.onload = function (e) {
 
     }
 
+    // Open Drop
+
+    const drop = document.querySelector('.drop'),
+        dropContent = document.querySelector('.drop__content');
+
+    drop.addEventListener('click', openDrop);
+
+    function openDrop() {
+        if (drop.classList.contains('open')) {
+            drop.classList.remove('open');
+            //drop.style.height = "48px";
+
+        } else {
+            drop.classList.add('open');
+            //drop.style.height = drop.offsetHeight + dropContent.offsetHeight + "px";
+        }
+    }
+
 }
