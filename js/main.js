@@ -3,9 +3,9 @@ window.onload = function (e) {
     // Populate Content
     const projects = [{
             id: 0,
-            client: "Energy Digital Platform",
-            thumb: "assets/thumbs/pbs.jpg",
-            color: "#0b10b7",
+            client: "EDP Digital Platform",
+            thumb: "assets/thumbs/edp.jpg",
+            color: "#F6334f",
             url: "https://google.com",
             user: "f6ds_usr",
             pass: "aRfvbGt67Hj",
@@ -29,8 +29,8 @@ window.onload = function (e) {
         {
             id: 1,
             client: "Portgás",
-            thumb: "assets/thumbs/ageas.jpg",
-            color: "#12A3BB",
+            thumb: "assets/thumbs/portgas.jpg",
+            color: "#003087",
             url: "https://google.com",
             user: "cenas_usr",
             pass: "gtYhnJK78Sd",
@@ -54,8 +54,8 @@ window.onload = function (e) {
         {
             id: 2,
             client: "McDonald's",
-            thumb: "assets/thumbs/ageas.jpg",
-            color: "#12A3BB",
+            thumb: "assets/thumbs/mcdonalds.jpg",
+            color: "#ffbc0d",
             url: "https://google.com",
             user: "cenas_usr",
             pass: "gtYhnJK78Sd",
@@ -79,8 +79,8 @@ window.onload = function (e) {
         {
             id: 3,
             client: "CUF",
-            thumb: "assets/thumbs/ageas.jpg",
-            color: "#12A3BB",
+            thumb: "assets/thumbs/cuf.jpg",
+            color: "#00a2ce",
             url: "https://google.com",
             user: "cenas_usr",
             pass: "gtYhnJK78Sd",
@@ -104,8 +104,8 @@ window.onload = function (e) {
         {
             id: 4,
             client: "AICEP",
-            thumb: "assets/thumbs/ageas.jpg",
-            color: "#12A3BB",
+            thumb: "assets/thumbs/aicep.jpg",
+            color: "#00A4B4",
             url: "https://google.com",
             user: "cenas_usr",
             pass: "gtYhnJK78Sd",
@@ -129,8 +129,8 @@ window.onload = function (e) {
         {
             id: 5,
             client: "Ferbar",
-            thumb: "assets/thumbs/ageas.jpg",
-            color: "#12A3BB",
+            thumb: "assets/thumbs/ferbar.jpg",
+            color: "#ed2424",
             url: "https://google.com",
             user: "cenas_usr",
             pass: "gtYhnJK78Sd",
@@ -179,8 +179,8 @@ window.onload = function (e) {
         {
             id: 7,
             client: "Ageas Portugal",
-            thumb: "assets/thumbs/ageas.jpg",
-            color: "#12A3BB",
+            thumb: "assets/thumbs/ageaspt.jpg",
+            color: "#d30773",
             url: "https://google.com",
             user: "cenas_usr",
             pass: "gtYhnJK78Sd",
@@ -204,8 +204,8 @@ window.onload = function (e) {
         {
             id: 8,
             client: "Vodafone",
-            thumb: "assets/thumbs/ageas.jpg",
-            color: "#12A3BB",
+            thumb: "assets/thumbs/vodafone.jpg",
+            color: "#e60000",
             url: "https://google.com",
             user: "cenas_usr",
             pass: "gtYhnJK78Sd",
@@ -229,8 +229,8 @@ window.onload = function (e) {
         {
             id: 9,
             client: "Seguro Directo",
-            thumb: "assets/thumbs/ageas.jpg",
-            color: "#12A3BB",
+            thumb: "assets/thumbs/segurodirecto.jpg",
+            color: "#2fc9da",
             url: "https://google.com",
             user: "cenas_usr",
             pass: "gtYhnJK78Sd",
@@ -255,7 +255,7 @@ window.onload = function (e) {
             id: 10,
             client: "Porto Business School",
             thumb: "assets/thumbs/pbs.jpg",
-            color: "#12A3BB",
+            color: "#192aea",
             url: "https://google.com",
             user: "cenas_usr",
             pass: "gtYhnJK78Sd",
@@ -279,8 +279,8 @@ window.onload = function (e) {
         {
             id: 11,
             client: "Porto Bay",
-            thumb: "assets/thumbs/ageas.jpg",
-            color: "#12A3BB",
+            thumb: "assets/thumbs/portobay.jpg",
+            color: "#3e91b1",
             url: "https://google.com",
             user: "cenas_usr",
             pass: "gtYhnJK78Sd",
@@ -304,8 +304,8 @@ window.onload = function (e) {
         {
             id: 12,
             client: "Médis",
-            thumb: "assets/thumbs/ageas.jpg",
-            color: "#12A3BB",
+            thumb: "assets/thumbs/medis.jpg",
+            color: "#11bba1",
             url: "https://google.com",
             user: "cenas_usr",
             pass: "gtYhnJK78Sd",
@@ -329,8 +329,8 @@ window.onload = function (e) {
         {
             id: 13,
             client: "Entreposto",
-            thumb: "assets/thumbs/ageas.jpg",
-            color: "#12A3BB",
+            thumb: "assets/thumbs/entreposto.jpg",
+            color: "#f51e1e",
             url: "https://google.com",
             user: "cenas_usr",
             pass: "gtYhnJK78Sd",
@@ -532,10 +532,14 @@ window.onload = function (e) {
 
     function cleanResults() {
         searchInput.value = "";
-        document.querySelector('.projects').innerHTML = "";
+
         cleanBtn.style.display = "none";
         noResults.style.display = "none";
-        showProjects();
+
+        projectItem.forEach(function (el) {
+            el.style.display = "flex";
+        })
+
     }
 
 }
