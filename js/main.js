@@ -451,13 +451,16 @@ window.onload = function (e) {
 
         function selectFave(e) {
             const currentProject = e.currentTarget.closest('.projects__item');
+            getFaves = JSON.parse(localStorage.getItem('projectFaves'));
 
             if (currentProject.classList.contains('faved')) {
                 currentProject.classList.remove('faved');
+                const targetIndex = [...getFaves].indexOf(e.currentTarget.closest('.projects__item').dataset.id)
+                getFaves.splice(targetIndex, 1);
+                getFaves = localStorage.setItem('projectFaves', JSON.stringify(getFaves));
             } else {
                 currentProject.classList.add('faved');
                 if (getFaves) {
-                    getFaves = JSON.parse(localStorage.getItem('projectFaves'));
                     getFaves.push(e.currentTarget.closest('.projects__item').dataset.id);
                     getFaves = localStorage.setItem('projectFaves', JSON.stringify(getFaves));
                 } else {
