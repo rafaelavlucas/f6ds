@@ -404,8 +404,12 @@ window.onload = function (e) {
 
                 document.querySelectorAll(".projects__tools")[el.id].insertAdjacentHTML("beforeend", template2);
             })
+
+
         });
     }
+
+
 
     // Select and copy User and Password
     function copydetails() {
@@ -450,6 +454,7 @@ window.onload = function (e) {
         });
 
         function selectFave(e) {
+            e.stopPropagation();
             const currentProject = e.currentTarget.closest('.projects__item');
             getFaves = JSON.parse(localStorage.getItem('projectFaves'));
 
@@ -497,7 +502,10 @@ window.onload = function (e) {
                     el.style.display = "none";
 
                 } else {
-                    el.style.display = "flex";
+                    el.style.display = "none";
+                    setTimeout(() => {
+                        el.style.display = "flex";
+                    }, 100);
                     btnAll.classList.remove('selected');
                     btnFaves.classList.add('selected');
                 }
@@ -505,7 +513,10 @@ window.onload = function (e) {
         })
         btnAll.addEventListener('click', function () {
             projectItem.forEach(function (el) {
-                el.style.display = "flex";
+                el.style.display = "none";
+                setTimeout(() => {
+                    el.style.display = "flex";
+                }, 100);
                 btnAll.classList.add('selected');
                 btnFaves.classList.remove('selected');
             })
@@ -582,7 +593,10 @@ window.onload = function (e) {
             })
 
             getProjects.forEach(function (el) {
-                el.style.display = "flex";
+                el.style.display = "none";
+                setTimeout(() => {
+                    el.style.display = "flex";
+                }, 100);
             })
 
             if (getProjects == 0) {
@@ -639,4 +653,7 @@ window.onload = function (e) {
     darkMode();
     search();
     openDrop();
+
+
+
 }

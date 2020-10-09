@@ -595,6 +595,8 @@ body {
 }
 
 .projects {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
   margin: 80px auto;
   display: -ms-grid;
   display: grid;
@@ -635,6 +637,24 @@ body {
   -webkit-box-shadow: -24px -24px 50px -24px rgba(0, 0, 0, 0.3);
           box-shadow: -24px -24px 50px -24px rgba(0, 0, 0, 0.3);
   cursor: pointer;
+  -webkit-animation: item 0.4s 0.2s cubic-bezier(0.25, 0.1, 0.11, 1.45) backwards;
+          animation: item 0.4s 0.2s cubic-bezier(0.25, 0.1, 0.11, 1.45) backwards;
+}
+
+@-webkit-keyframes item {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(40px);
+            transform: translateY(40px);
+  }
+}
+
+@keyframes item {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(40px);
+            transform: translateY(40px);
+  }
 }
 
 .projects__item:hover {
