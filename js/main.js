@@ -2,6 +2,10 @@ window.onload = function (e) {
     let projectItem = "",
         faveProjects = [];
 
+    const noFaves = document.querySelector('.message__noFaves'),
+        noResults = document.querySelector('.message__noResults');
+
+
     const projects = [{
             id: 0,
             client: "EDP Digital Platform",
@@ -452,16 +456,19 @@ window.onload = function (e) {
 
         function selectFave(e) {
             e.stopPropagation();
+
             const currentProject = e.currentTarget.closest('.projects__item');
             getFaves = JSON.parse(localStorage.getItem('projectFaves'));
 
             if (currentProject.classList.contains('faved')) {
                 currentProject.classList.remove('faved');
+                noFaves.style.display = "none";
                 const targetIndex = [...getFaves].indexOf(e.currentTarget.closest('.projects__item').dataset.id)
                 getFaves.splice(targetIndex, 1);
                 getFaves = localStorage.setItem('projectFaves', JSON.stringify(getFaves));
             } else {
                 currentProject.classList.add('faved');
+                noFaves.style.display = "none";
                 if (getFaves) {
                     getFaves.push(e.currentTarget.closest('.projects__item').dataset.id);
                     getFaves = localStorage.setItem('projectFaves', JSON.stringify(getFaves));
@@ -470,6 +477,7 @@ window.onload = function (e) {
                     getFaves = localStorage.setItem('projectFaves', JSON.stringify(faveProjects));
                 }
             }
+
         }
     };
 
@@ -491,8 +499,7 @@ window.onload = function (e) {
     // Filter faves
     function filterFaves() {
         const btnFaves = document.querySelector('.filters__item.faves'),
-            btnAll = document.querySelector('.filters__item.all'),
-            noFaves = document.querySelector('.message__noFaves');
+            btnAll = document.querySelector('.filters__item.all');
 
         btnFaves.addEventListener('click', function () {
             projectItem.forEach(function (el) {
@@ -520,11 +527,12 @@ window.onload = function (e) {
                 setTimeout(() => {
                     el.style.display = "flex";
                 }, 100);
+
                 btnAll.classList.add('selected');
                 btnFaves.classList.remove('selected');
+                noResults.style.display = "none";
                 noFaves.style.display = "none";
             })
-
         })
     }
 
@@ -572,8 +580,7 @@ window.onload = function (e) {
 
     // Search
     function search() {
-        const noResults = document.querySelector('.message__noResults'),
-            searchInput = document.getElementById("search"),
+        const searchInput = document.getElementById("search"),
             cleanBtn = document.querySelector('.search__clean');
 
         searchInput.addEventListener('keyup', function (event) {
@@ -605,7 +612,9 @@ window.onload = function (e) {
 
             if (getProjects == 0) {
                 noResults.style.display = "flex";
+                noFaves.style.display = "none";
             } else {
+                noFaves.style.display = "none";
                 noResults.style.display = "none";
             }
 
@@ -614,6 +623,7 @@ window.onload = function (e) {
             } else {
                 cleanBtn.style.display = "flex";
             }
+
 
         });
 
