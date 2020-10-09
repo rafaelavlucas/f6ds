@@ -194,7 +194,7 @@ body {
 
     @include sm {
         margin-left: 0px;
-        margin-bottom: 16px;
+        margin-bottom: 24px;
     }
 
     &__button {
@@ -365,7 +365,6 @@ body {
     position: relative;
 
     @include sm {
-
         flex-direction: column-reverse;
     }
 }
