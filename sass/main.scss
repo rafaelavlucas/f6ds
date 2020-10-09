@@ -603,11 +603,12 @@ body {
         @include transition();
         display: flex;
         position: absolute;
-        width: 24px;
-        height: 24px;
+        width: 40px;
+        height: 40px;
         right: 24px;
         top: 24px;
-        background-size: contain;
+
+        background-size: 24px;
         background-repeat: no-repeat;
         background-position: center;
         background-image: var(--iconHeart);
