@@ -5,7 +5,6 @@ window.onload = function (e) {
     const noFaves = document.querySelector('.message__noFaves'),
         noResults = document.querySelector('.message__noResults');
 
-
     const projects = [{
             id: 0,
             client: "EDP Digital Platform",
@@ -448,7 +447,6 @@ window.onload = function (e) {
     // Add to favorites
     function addFave() {
         const faveBtn = document.querySelectorAll('.projects__fave');
-        let getFaves = JSON.parse(localStorage.getItem('projectFaves'));
 
         faveBtn.forEach(function (el) {
             el.addEventListener('click', selectFave)
@@ -462,13 +460,11 @@ window.onload = function (e) {
 
             if (currentProject.classList.contains('faved')) {
                 currentProject.classList.remove('faved');
-                noFaves.style.display = "none";
                 const targetIndex = [...getFaves].indexOf(e.currentTarget.closest('.projects__item').dataset.id)
                 getFaves.splice(targetIndex, 1);
                 getFaves = localStorage.setItem('projectFaves', JSON.stringify(getFaves));
             } else {
                 currentProject.classList.add('faved');
-                noFaves.style.display = "none";
                 if (getFaves) {
                     getFaves.push(e.currentTarget.closest('.projects__item').dataset.id);
                     getFaves = localStorage.setItem('projectFaves', JSON.stringify(getFaves));
@@ -477,7 +473,6 @@ window.onload = function (e) {
                     getFaves = localStorage.setItem('projectFaves', JSON.stringify(faveProjects));
                 }
             }
-
         }
     };
 
@@ -499,16 +494,10 @@ window.onload = function (e) {
     function filterFaves() {
         const btnFaves = document.querySelector('.filters__item.faves'),
             btnAll = document.querySelector('.filters__item.all');
-        let getFaves = JSON.parse(localStorage.getItem('projectFaves'));
 
         btnFaves.addEventListener('click', function () {
-            if (getFaves == "") {
-                noFaves.style.display = "flex";
-            } else {
-                noFaves.style.display = "none";
-            }
+            ifnoFaves();
 
-            console.log(getFaves)
             projectItem.forEach(function (el) {
                 if (!el.classList.contains('faved')) {
                     el.style.display = "none";
@@ -540,6 +529,16 @@ window.onload = function (e) {
                 noFaves.style.display = "none";
             })
         })
+    }
+
+    function ifnoFaves() {
+        getFaves = JSON.parse(localStorage.getItem('projectFaves'));
+
+        if (getFaves.length) {
+            noFaves.style.display = "none";
+        } else {
+            noFaves.style.display = "flex";
+        }
     }
 
     // Click on Projects and show details
@@ -663,6 +662,7 @@ window.onload = function (e) {
     //////////////////
     // Call functions
     //////////////////
+
     addProjects();
     addFave();
     saveFaves();
@@ -672,5 +672,6 @@ window.onload = function (e) {
     darkMode();
     search();
     openDrop();
+
 
 }
