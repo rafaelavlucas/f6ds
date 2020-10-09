@@ -152,7 +152,7 @@ body {
     justify-content: space-between;
 
     @include sm {
-        height: 120px;
+        height: 130px;
     }
 
     &__logo {
@@ -165,10 +165,10 @@ body {
         background-image: var(--f6logo);
 
         @include sm {
-            //top: 0;
-            width: 100px;
+            top: 0;
+            width: 80px;
             height: 70px;
-            //align-self: flex-start;
+
         }
     }
 }
@@ -197,12 +197,12 @@ body {
 
 .actions {
     display: flex;
-
     justify-content: flex-end;
     align-items: center;
     width: 100%;
 
     @include sm {
+
         align-items: flex-end;
         flex-direction: column-reverse;
         justify-content: space-between;
@@ -217,7 +217,7 @@ body {
 
     @include sm {
         margin-left: 0px;
-        margin-bottom: 24px;
+        margin-bottom: 16px;
     }
 
     &__button {
@@ -284,6 +284,12 @@ body {
     position: relative;
     background: var(--inputBg);
     cursor: pointer;
+
+    @include sm {
+        width: 100%;
+        max-width: 400px;
+        //align-self: center;
+    }
 
     &__title {
         border-radius: 8px;
@@ -383,6 +389,7 @@ body {
     position: relative;
 
     @include sm {
+
         flex-direction: column-reverse;
     }
 }

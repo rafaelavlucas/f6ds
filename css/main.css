@@ -91,7 +91,7 @@ body {
 
 @media screen and (max-width: 799px) {
   .nav {
-    height: 120px;
+    height: 130px;
   }
 }
 
@@ -107,7 +107,8 @@ body {
 
 @media screen and (max-width: 799px) {
   .nav__logo {
-    width: 100px;
+    top: 0;
+    width: 80px;
     height: 70px;
   }
 }
@@ -178,7 +179,7 @@ body {
 @media screen and (max-width: 799px) {
   .toggle {
     margin-left: 0px;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
   }
 }
 
@@ -246,6 +247,13 @@ body {
   position: relative;
   background: var(--inputBg);
   cursor: pointer;
+}
+
+@media screen and (max-width: 799px) {
+  .drop {
+    width: 100%;
+    max-width: 400px;
+  }
 }
 
 .drop__title {
