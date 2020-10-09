@@ -513,9 +513,7 @@ window.onload = function (e) {
                     el.style.display = "none";
                     btnAll.classList.remove('selected');
                     btnFaves.classList.add('selected');
-                    if (el.style.display = "none") {
-                        noFaves.style.display = "flex";
-                    }
+
                 } else {
                     el.style.display = "none";
                     setTimeout(() => {
