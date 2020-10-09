@@ -13,6 +13,8 @@
   --inputBorder: #e9e9e9;
   --iconClean: url("/assets/close-b.svg");
   --iconSearch: url("/assets/search-b.svg");
+  --iconHeart: url("/assets/heart-b.svg");
+  --iconHeartFill: url("/assets/heartFill-b.svg");
 }
 
 [data-theme="dark"] {
@@ -30,6 +32,8 @@
   --inputBorder: #5b5b5b;
   --iconClean: url("/assets/close-w.svg");
   --iconSearch: url("/assets/search-w.svg");
+  --iconHeart: url("/assets/heart-w.svg");
+  --iconHeartFill: url("/assets/heartFill-w.svg");
 }
 
 * {
@@ -60,7 +64,14 @@ body {
   transition: all 0.3s ease;
 }
 
-.header {
+.wrapper {
+  padding-left: 5vw;
+  padding-right: 5vw;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.nav {
   height: 100px;
   padding: 0 5vw;
   display: -webkit-box;
@@ -76,12 +87,12 @@ body {
 }
 
 @media screen and (max-width: 799px) {
-  .header {
+  .nav {
     height: 120px;
   }
 }
 
-.header__logo {
+.nav__logo {
   width: 120px;
   height: 100px;
   position: absolute;
@@ -92,11 +103,21 @@ body {
 }
 
 @media screen and (max-width: 799px) {
-  .header__logo {
-    top: 0;
+  .nav__logo {
     width: 100px;
     height: 70px;
   }
+}
+
+.header {
+  margin: 80px 0;
+}
+
+.header__title {
+  text-align: center;
+  color: var(--text);
+  font-weight: 200;
+  letter-spacing: 0.5px;
 }
 
 .actions {
@@ -106,6 +127,9 @@ body {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 100%;
 }
 
@@ -118,6 +142,9 @@ body {
     -webkit-box-direction: reverse;
         -ms-flex-direction: column-reverse;
             flex-direction: column-reverse;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
   }
 }
 
@@ -133,7 +160,8 @@ body {
 
 @media screen and (max-width: 799px) {
   .toggle {
-    margin-bottom: 16px;
+    margin-left: 0px;
+    margin-bottom: 24px;
   }
 }
 
@@ -196,7 +224,7 @@ body {
   transition: all 0.4s ease;
   color: var(--text);
   background: var(--bodyBg);
-  width: 320px;
+  width: 200px;
   max-width: 320px;
   height: 40px;
   z-index: 2;
@@ -204,16 +232,6 @@ body {
   position: relative;
   -webkit-box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
           box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
-}
-
-@media screen and (max-width: 799px) {
-  .drop {
-    max-width: 400px;
-    width: 100%;
-    -ms-flex-item-align: center;
-        -ms-grid-row-align: center;
-        align-self: center;
-  }
 }
 
 .drop__title {
@@ -304,17 +322,9 @@ body {
 }
 
 .search {
-  padding-left: 5vw;
-  padding-right: 5vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -335,7 +345,6 @@ body {
       -ms-flex-align: center;
           align-items: center;
   position: relative;
-  margin: 0 auto;
 }
 
 .search__content:before {
@@ -471,9 +480,6 @@ body {
 }
 
 .projects {
-  padding-left: 5vw;
-  padding-right: 5vw;
-  max-width: 1920px;
   margin: 80px auto;
   display: -ms-grid;
   display: grid;
@@ -521,6 +527,34 @@ body {
 .projects__item:hover .projects__thumb img {
   -webkit-filter: grayscale(0%);
           filter: grayscale(0%);
+}
+
+.projects__fave {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  right: 16px;
+  top: 16px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("/assets/arrowDown.svg");
+  z-index: 2;
+  cursor: pointer;
+}
+
+.projects__fave:hover {
+  -webkit-transform: scale(2);
+          transform: scale(2);
+}
+
+.projects__fave.add {
+  background-image: url("/assets/sun.svg");
 }
 
 .projects__thumb {
@@ -572,6 +606,8 @@ body {
   font-size: 20px;
   font-weight: normal;
   z-index: 3;
+  font-weight: 300;
+  width: 80%;
 }
 
 .projects__color {
@@ -830,6 +866,11 @@ body {
   cursor: default;
   -webkit-box-shadow: 0px 0px 50px -16px rgba(0, 0, 0, 0.3);
           box-shadow: 0px 0px 50px -16px rgba(0, 0, 0, 0.3);
+}
+
+.projects .active:hover {
+  -webkit-transform: translateY(0px);
+          transform: translateY(0px);
 }
 
 .projects .active .projects__color {

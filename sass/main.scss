@@ -15,6 +15,9 @@
     --iconClean: url("/assets/close-b.svg");
     --iconSearch: url("/assets/search-b.svg");
 
+    --iconHeart: url("/assets/heart-b.svg");
+    --iconHeartFill: url("/assets/heartFill-b.svg");
+
 
 
 }
@@ -34,6 +37,9 @@
     --inputBorder: #5b5b5b;
     --iconClean: url("/assets/close-w.svg");
     --iconSearch: url("/assets/search-w.svg");
+
+    --iconHeart: url("/assets/heart-w.svg");
+    --iconHeartFill: url("/assets/heartFill-w.svg");
 
 
 }
@@ -128,9 +134,13 @@ body {
     transition: all 0.3s ease;
 }
 
-.wrapper {}
+.wrapper {
+    @include margins();
+    max-width: $maxWidthContent;
+    margin: 0 auto;
+}
 
-.header {
+.nav {
     height: 100px;
     padding: 0 5vw;
     display: flex;
@@ -152,7 +162,7 @@ body {
         background-image: var(--f6logo);
 
         @include sm {
-            top: 0;
+            //top: 0;
             width: 100px;
             height: 70px;
             //align-self: flex-start;
@@ -160,15 +170,29 @@ body {
     }
 }
 
+.header {
+    margin: 80px 0;
+
+    &__title {
+        text-align: center;
+        color: var(--text);
+        font-weight: 200;
+        letter-spacing: 0.5px;
+    }
+
+}
+
 .actions {
     display: flex;
 
     justify-content: flex-end;
+    align-items: center;
     width: 100%;
 
     @include sm {
         align-items: flex-end;
         flex-direction: column-reverse;
+        justify-content: space-between;
     }
 }
 
@@ -179,7 +203,8 @@ body {
     margin-left: 40px;
 
     @include sm {
-        margin-bottom: 16px;
+        margin-left: 0px;
+        margin-bottom: 24px;
     }
 
     &__button {
@@ -239,19 +264,13 @@ body {
     $this: &;
     color: var(--text);
     background: var(--bodyBg);
-    width: 320px;
+    width: 200px;
     max-width: 320px;
     height: 40px;
     z-index: 2;
     border-radius: 8px;
     position: relative;
     box-shadow: 0px 4px 20px 0px rgba(black, 0.25);
-
-    @include sm {
-        max-width: 400px;
-        width: 100%;
-        align-self: center;
-    }
 
     &__title {
         border-radius: 8px;
@@ -268,7 +287,6 @@ body {
             width: 24px;
             height: 24px;
             right: 16px;
-
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
@@ -278,7 +296,6 @@ body {
     }
 
     &__content {
-        //@include transition();
         border-radius: 8px;
         width: 100%;
         visibility: hidden;
@@ -292,7 +309,6 @@ body {
     }
 
     &__item {
-        //@include transition();
         padding: 0 24px;
         display: flex;
         align-items: center;
@@ -332,10 +348,7 @@ body {
 }
 
 .search {
-    @include margins();
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
     margin-top: 24px;
 
@@ -346,9 +359,6 @@ body {
         justify-content: center;
         align-items: center;
         position: relative;
-        margin: 0 auto;
-
-
 
         &:before {
             content: '';
@@ -383,9 +393,7 @@ body {
             max-width: 400px;
         }
 
-
         &::placeholder {
-
             @include transition();
         }
 
@@ -443,13 +451,12 @@ body {
 }
 
 .projects {
-    @include margins;
     $this: &;
-    max-width: $maxWidthContent;
     margin: 80px auto;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(410px, 1fr));
     grid-gap: 40px;
+
 
     &__item {
         @include transition();
@@ -478,13 +485,35 @@ body {
                     }
                 }
             }
-
         }
     }
 
+    &__fave {
+        @include transition();
+        display: flex;
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        right: 16px;
+        top: 16px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: url("/assets/arrowDown.svg");
+        z-index: 2;
+        cursor: pointer;
+
+        &:hover {
+            transform: scale(2);
+        }
+
+        &.add {
+            background-image: url("/assets/sun.svg");
+        }
+
+    }
+
     &__thumb {
-
-
         @include transition();
         width: calc(100% - 48px);
         height: calc(100% - 80px);
@@ -498,7 +527,6 @@ body {
 
         img {
             @include transition();
-            //display: none;
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -527,6 +555,8 @@ body {
         font-size: 20px;
         font-weight: normal;
         z-index: 3;
+        font-weight: 300;
+        width: 80%;
     }
 
     &__color {
@@ -751,6 +781,10 @@ body {
         cursor: default;
         box-shadow: 0px 0px 50px -16px rgba(black, 0.3);
 
+        &:hover {
+            transform: translateY(0px);
+        }
+
         #{$this} {
             &__color {
                 opacity: 0.8;
@@ -784,6 +818,8 @@ body {
 
         }
     }
+
+
 }
 
 .link {
