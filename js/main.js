@@ -1,11 +1,13 @@
 window.onload = function (e) {
     const projectItem = document.querySelectorAll(".projects__item"),
         faveProjects = [];
-
     let getFaves = JSON.parse(localStorage.getItem('projectFaves'));
-    const cenas = getFaves.split(',').map(Number);
-    const getFaveProjects = [...projectItem].filter(element => cenas.indexOf(parseInt(element.dataset.id)) >= 0);
 
+
+    if (getFaves) {
+        const cenas = getFaves.map(Number);
+        const getFaveProjects = [...projectItem].filter(element => cenas.indexOf(parseInt(element.dataset.id)) >= 0);
+    };
 
     console.log(getFaves)
 
