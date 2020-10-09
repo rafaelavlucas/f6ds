@@ -543,14 +543,14 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url("/assets/arrowDown.svg");
+  background-image: var(--iconHeart);
   z-index: 2;
   cursor: pointer;
 }
 
 .projects__fave:hover {
-  -webkit-transform: scale(2);
-          transform: scale(2);
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
 }
 
 .projects__thumb {
@@ -901,7 +901,7 @@ body {
 }
 
 .projects .faved .projects__fave {
-  background-image: url("/assets/sun.svg");
+  background-image: var(--iconHeartFill);
 }
 
 .link {

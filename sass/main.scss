@@ -469,7 +469,6 @@ body {
     grid-template-columns: repeat(auto-fill, minmax(410px, 1fr));
     grid-gap: 40px;
 
-
     &__item {
         @include transition();
         min-height: 320px;
@@ -511,12 +510,12 @@ body {
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
-        background-image: url("/assets/arrowDown.svg");
+        background-image: var(--iconHeart);
         z-index: 2;
         cursor: pointer;
 
         &:hover {
-            transform: scale(2);
+            transform: scale(1.5);
         }
 
     }
@@ -830,7 +829,7 @@ body {
     .faved {
         #{$this} {
             &__fave {
-                background-image: url("/assets/sun.svg");
+                background-image: var(--iconHeartFill);
             }
         }
     }
