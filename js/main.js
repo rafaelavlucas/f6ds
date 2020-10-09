@@ -448,7 +448,7 @@ window.onload = function (e) {
     // Add to favorites
     function addFave() {
         const faveBtn = document.querySelectorAll('.projects__fave');
-        let getFaves = localStorage.getItem('projectFaves');
+        let getFaves = JSON.parse(localStorage.getItem('projectFaves'));
 
         faveBtn.forEach(function (el) {
             el.addEventListener('click', selectFave)
@@ -500,8 +500,14 @@ window.onload = function (e) {
     function filterFaves() {
         const btnFaves = document.querySelector('.filters__item.faves'),
             btnAll = document.querySelector('.filters__item.all');
+        let getFaves = JSON.parse(localStorage.getItem('projectFaves'));
 
         btnFaves.addEventListener('click', function () {
+            if (getFaves) {
+                noFaves.style.display = "none";
+            } else {
+                noFaves.style.display = "flex";
+            }
             projectItem.forEach(function (el) {
                 if (!el.classList.contains('faved')) {
                     el.style.display = "none";
@@ -612,7 +618,6 @@ window.onload = function (e) {
 
             if (getProjects == 0) {
                 noResults.style.display = "flex";
-                noFaves.style.display = "none";
             } else {
                 noFaves.style.display = "none";
                 noResults.style.display = "none";
