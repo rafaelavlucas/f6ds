@@ -454,12 +454,11 @@ window.onload = function (e) {
 
             if (currentProject.classList.contains('faved')) {
                 currentProject.classList.remove('faved');
-
             } else {
                 currentProject.classList.add('faved');
                 if (getFaves) {
-                    getFaves = getFaves.push;
-                    getFaves.push(e.currentTarget.closest('.projects__item').dataset.id);
+                    getFaves = JSON.parse(getFaves);
+                    getFaves = getFaves.push(e.currentTarget.closest('.projects__item').dataset.id)
                     getFaves = localStorage.setItem('projectFaves', JSON.stringify(getFaves));
                 } else {
                     faveProjects.push(e.currentTarget.closest('.projects__item').dataset.id);
