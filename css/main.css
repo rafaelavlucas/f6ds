@@ -553,10 +553,6 @@ body {
           transform: scale(2);
 }
 
-.projects__fave.add {
-  background-image: url("/assets/sun.svg");
-}
-
 .projects__thumb {
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
@@ -902,6 +898,10 @@ body {
   opacity: 1;
   -webkit-transform: translateY(0);
           transform: translateY(0);
+}
+
+.projects .faved .projects__fave {
+  background-image: url("/assets/sun.svg");
 }
 
 .link {

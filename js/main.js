@@ -407,7 +407,6 @@ window.onload = function (e) {
         });
     }
 
-
     // Select and copy User and Password
     function copydetails() {
         const text = document.querySelectorAll('.projects__detail--text'),
@@ -451,15 +450,21 @@ window.onload = function (e) {
         });
 
         function selectFave(e) {
-            if (e.currentTarget.classList.contains('add')) {
-                e.currentTarget.classList.remove('add');
-                e.currentTarget.closest('.projects__item').classList.remove('fave');
+            const currentProject = e.currentTarget.closest('.projects__item');
+
+            if (currentProject.classList.contains('faved')) {
+                currentProject.classList.remove('faved');
 
             } else {
-                e.currentTarget.classList.add('add');
-                e.currentTarget.closest('.projects__item').classList.add('fave');
-                faveProjects.push(e.currentTarget.closest('.projects__item').dataset.id);
-                getFaves = localStorage.setItem('projectFaves', JSON.stringify(faveProjects));
+                currentProject.classList.add('faved');
+                if (getFaves) {
+                    getFaves.push(e.currentTarget.closest('.projects__item').dataset.id);
+                    getFaves = localStorage.setItem('projectFaves', JSON.stringify(getFaves));
+                } else {
+                    faveProjects.push(e.currentTarget.closest('.projects__item').dataset.id);
+
+                    getFaves = localStorage.setItem('projectFaves', JSON.stringify(faveProjects));
+                }
             }
         }
     };
@@ -473,8 +478,7 @@ window.onload = function (e) {
             const getFaveProjects = [...projectItem].filter(element => cenas.indexOf(parseInt(element.dataset.id)) >= 0);
             console.log(getFaveProjects)
             getFaveProjects.forEach(function (el) {
-                el.querySelector('.projects__fave').classList.add('add');
-                el.classList.add('fave');
+                el.classList.add('faved');
             })
         };
     }
@@ -596,7 +600,6 @@ window.onload = function (e) {
     // Call functions
     //////////////////
     addProjects();
-
     addFave();
     saveFaves();
     openProject();
@@ -604,8 +607,4 @@ window.onload = function (e) {
     darkMode();
     search();
     openDrop();
-
-
-
-
 }

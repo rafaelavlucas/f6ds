@@ -519,10 +519,6 @@ body {
             transform: scale(2);
         }
 
-        &.add {
-            background-image: url("/assets/sun.svg");
-        }
-
     }
 
     &__thumb {
@@ -828,6 +824,14 @@ body {
                 transform: translateY(0);
             }
 
+        }
+    }
+
+    .faved {
+        #{$this} {
+            &__fave {
+                background-image: url("/assets/sun.svg");
+            }
         }
     }
 
