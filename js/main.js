@@ -355,7 +355,6 @@ window.onload = function (e) {
 
     ];
 
-
     // Add Projects
     function addProjects() {
         projects.forEach(function (el) {
@@ -397,7 +396,7 @@ window.onload = function (e) {
 
             el.tools.forEach(function (tool) {
                 let template2 = `
-                <a class="projects__toolLink" href="${tool.link}">
+                <a class="projects__toolLink" href="${tool.link}" target="_blank">
                     <p class="projects__toolTitle">${tool.title}</p>
                     <p class="projects__toolName ${tool.name}">${tool.name}</p>
                 </a>`;
@@ -408,8 +407,6 @@ window.onload = function (e) {
 
         });
     }
-
-
 
     // Select and copy User and Password
     function copydetails() {
@@ -653,7 +650,5 @@ window.onload = function (e) {
     darkMode();
     search();
     openDrop();
-
-
 
 }
