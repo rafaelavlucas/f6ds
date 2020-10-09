@@ -2,7 +2,7 @@ window.onload = function (e) {
     const projectItem = document.querySelectorAll(".projects__item"),
         faveProjects = [];
 
-    let getFaves = localStorage.getItem('projectFaves');
+    let getFaves = [...localStorage.getItem('projectFaves')];
     const getFaveProjects = [...projectItem].filter(element => getFaves.indexOf(parseInt(element.dataset.id)) >= 0);
 
     console.log(getFaveProjects)
