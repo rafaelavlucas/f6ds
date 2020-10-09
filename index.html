@@ -22,8 +22,10 @@
             <div class="drop">
                 <span class="drop__title">Useful tools</span>
                 <ul class="drop__content">
-                    <li class="drop__item"><a href="">Lettercounter</a></li>
-                    <li class="drop__item"><a href="">Multiples</a></li>
+                    <li class="drop__item"><a href="https://lettercounter.azurewebsites.net/"
+                            target="_blank">Lettercounter</a></li>
+                    <li class="drop__item"><a href="https://multiples.azurewebsites.net/" target="_blank">Multiples</a>
+                    </li>
                 </ul>
             </div>
             <div class="toggle">
@@ -37,17 +39,23 @@
         <header class="header">
             <h1 class="header__title">Fullsix Design System Repository</h1>
         </header>
-        <div class="search">
-            <div class="search__content">
-                <input type="text" placeholder="search..." autocomplete="off" name="search" id="search"
-                    class="search__input">
-                <span class="search__clean"></span>
+
+        <section class="tools">
+            <div class="search">
+                <div class="search__content">
+                    <input type="text" placeholder="search..." autocomplete="off" name="search" id="search"
+                        class="search__input">
+                    <span class="search__clean"></span>
+                </div>
+                <p class="search__noResults">Sorry, no results.</p>
             </div>
 
-            <p class="search__noResults">Sorry, no results.</p>
+            <div class="filters">
+                <span class="filters__item all selected">View all</span>
+                <span class="filters__item faves">My Favourites</span>
+            </div>
 
-        </div>
-
+        </section>
 
         <section class="projects" id="dsList">
         </section>
