@@ -535,8 +535,10 @@ window.onload = function (e) {
         getFaves = JSON.parse(localStorage.getItem('projectFaves'));
 
         if (getFaves.length) {
+            noResults.style.display = "none";
             noFaves.style.display = "none";
         } else {
+            noResults.style.display = "flex";
             noFaves.style.display = "flex";
         }
     }
