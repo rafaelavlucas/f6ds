@@ -5,7 +5,7 @@ window.onload = function (e) {
     let getFaves = [...localStorage.getItem('projectFaves')];
     const getFaveProjects = [...projectItem].filter(element => getFaves.indexOf(parseInt(element.dataset.id)) >= 0);
 
-    console.log(getFaveProjects)
+    console.log(getFaves)
 
     // Add Projects
     function addProjects() {
@@ -478,7 +478,7 @@ window.onload = function (e) {
                 e.currentTarget.classList.add('add');
                 e.currentTarget.closest('.projects__item').classList.add('fave');
                 faveProjects.push(e.currentTarget.closest('.projects__item').dataset.id);
-                getFaves = localStorage.setItem('projectFaves', faveProjects);
+                getFaves = localStorage.setItem('projectFaves', JSON.stringify(faveProjects));
                 console.log(getFaveProjects)
             }
         }

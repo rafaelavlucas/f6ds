@@ -263,14 +263,17 @@ body {
     @include transition();
     $this: &;
     color: var(--text);
-    background: var(--bodyBg);
+    //background: var(--bodyBg);
     width: 200px;
     max-width: 320px;
     height: 40px;
     z-index: 2;
     border-radius: 8px;
     position: relative;
-    box-shadow: 0px 4px 20px 0px rgba(black, 0.25);
+    //box-shadow: 0px 4px 20px 0px rgba(black, 0.25);
+    background: var(--inputBg);
+    border: 1px solid var(--inputBorder);
+    cursor: pointer;
 
     &__title {
         border-radius: 8px;
@@ -291,11 +294,11 @@ body {
             background-repeat: no-repeat;
             background-position: center;
             background-image: url("/assets/arrowDown.svg");
-
         }
     }
 
     &__content {
+        @include transition();
         border-radius: 8px;
         width: 100%;
         visibility: hidden;
@@ -303,9 +306,11 @@ body {
         padding-top: 40px;
         top: 0px;
         position: absolute;
-        background: var(--bodyBg);
+        background: var(--inputBg);
         z-index: -1;
         transition: all 0.3s ease;
+        box-shadow: 0px 8px 20px -5px rgba(black, 0);
+
     }
 
     &__item {
@@ -318,7 +323,6 @@ body {
     }
 
     &.open {
-        box-shadow: 0px 4px 20px 0px transparent;
 
         #{$this} {
             &__title {
@@ -334,7 +338,7 @@ body {
                 @include transition();
                 opacity: 1;
                 visibility: visible;
-                box-shadow: 0px 4px 20px 0px rgba(black, 0.25);
+                box-shadow: 0px 8px 20px -5px rgba(black, 0.25);
 
             }
 
@@ -366,7 +370,6 @@ body {
             width: 20px;
             height: 24px;
             left: 16px;
-
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
