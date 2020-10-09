@@ -489,7 +489,6 @@ window.onload = function (e) {
         if (getFaves) {
             const cenas = getFaves.map(Number);
             const getFaveProjects = [...projectItem].filter(element => cenas.indexOf(parseInt(element.dataset.id)) >= 0);
-            console.log(getFaveProjects)
             getFaveProjects.forEach(function (el) {
                 el.classList.add('faved');
             })
@@ -503,11 +502,13 @@ window.onload = function (e) {
         let getFaves = JSON.parse(localStorage.getItem('projectFaves'));
 
         btnFaves.addEventListener('click', function () {
-            if (getFaves) {
-                noFaves.style.display = "none";
-            } else {
+            if (getFaves == "") {
                 noFaves.style.display = "flex";
+            } else {
+                noFaves.style.display = "none";
             }
+
+            console.log(getFaves)
             projectItem.forEach(function (el) {
                 if (!el.classList.contains('faved')) {
                     el.style.display = "none";
@@ -526,6 +527,7 @@ window.onload = function (e) {
             })
         })
         btnAll.addEventListener('click', function () {
+
             projectItem.forEach(function (el) {
                 el.style.display = "none";
                 setTimeout(() => {
