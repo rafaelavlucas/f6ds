@@ -538,7 +538,7 @@ window.onload = function (e) {
             noResults.style.display = "none";
             noFaves.style.display = "none";
         } else {
-            noResults.style.display = "flex";
+            noResults.style.display = "none";
             noFaves.style.display = "flex";
         }
     }
@@ -619,6 +619,7 @@ window.onload = function (e) {
 
             if (getProjects == 0) {
                 noResults.style.display = "flex";
+
             } else {
                 noFaves.style.display = "none";
                 noResults.style.display = "none";
