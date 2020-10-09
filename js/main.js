@@ -1,15 +1,7 @@
 window.onload = function (e) {
-    const projectItem = document.querySelectorAll(".projects__item"),
+
+    let projectItem = "",
         faveProjects = [];
-    let getFaves = JSON.parse(localStorage.getItem('projectFaves'));
-
-
-    if (getFaves) {
-        const cenas = getFaves.map(Number);
-        const getFaveProjects = [...projectItem].filter(element => cenas.indexOf(parseInt(element.dataset.id)) >= 0);
-    };
-
-    console.log(getFaves)
 
     // Add Projects
     function addProjects() {
@@ -415,21 +407,6 @@ window.onload = function (e) {
         });
     }
 
-    // Click on Projects and show details
-    function openProject() {
-
-        projectItem.forEach(function (el) {
-            el.addEventListener("click", showDetail)
-        });
-
-        function showDetail(e) {
-            projectItem.forEach(function (el) {
-                el.classList.remove("active");
-            });
-
-            e.currentTarget.classList.add("active");
-        }
-    }
 
     // Select and copy User and Password
     function copydetails() {
@@ -483,11 +460,38 @@ window.onload = function (e) {
                 e.currentTarget.closest('.projects__item').classList.add('fave');
                 faveProjects.push(e.currentTarget.closest('.projects__item').dataset.id);
                 getFaves = localStorage.setItem('projectFaves', JSON.stringify(faveProjects));
-                console.log(getFaveProjects)
             }
         }
     };
 
+    function saveFaves() {
+        projectItem = document.querySelectorAll(".projects__item");
+        let getFaves = JSON.parse(localStorage.getItem('projectFaves'));
+
+        if (getFaves) {
+            const cenas = getFaves.map(Number);
+            const getFaveProjects = [...projectItem].filter(element => cenas.indexOf(parseInt(element.dataset.id)) >= 0);
+            console.log(getFaveProjects)
+            getFaveProjects.forEach(function (el) {
+                el.querySelector('.projects__fave').classList.add('add');
+                el.classList.add('fave');
+            })
+        };
+    }
+
+    // Click on Projects and show details
+    function openProject() {
+        projectItem.forEach(function (el) {
+            el.addEventListener("click", showDetail)
+        });
+
+        function showDetail(e) {
+            projectItem.forEach(function (el) {
+                el.classList.remove("active");
+            });
+            e.currentTarget.classList.add("active");
+        }
+    }
     // Dark Mode
     function darkMode() {
         const body = document.querySelector("body"),
@@ -588,17 +592,20 @@ window.onload = function (e) {
         });
     }
 
-
     //////////////////
     // Call functions
     //////////////////
     addProjects();
+
+    addFave();
+    saveFaves();
     openProject();
     copydetails();
-    addFave();
     darkMode();
     search();
     openDrop();
+
+
 
 
 }
