@@ -457,8 +457,8 @@ window.onload = function (e) {
             } else {
                 currentProject.classList.add('faved');
                 if (getFaves) {
-                    getFaves = JSON.parse(getFaves);
-                    getFaves = getFaves.push(e.currentTarget.closest('.projects__item').dataset.id)
+                    getFaves = JSON.parse(localStorage.getItem('projectFaves'));
+                    getFaves = getFaves.push(e.currentTarget.closest('.projects__item').dataset.id);
                     getFaves = localStorage.setItem('projectFaves', JSON.stringify(getFaves));
                 } else {
                     faveProjects.push(e.currentTarget.closest('.projects__item').dataset.id);
