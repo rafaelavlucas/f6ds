@@ -253,6 +253,9 @@ body {
   .drop {
     width: 100%;
     max-width: 400px;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
   }
 }
 
@@ -686,6 +689,15 @@ body {
           transform: translateY(-6px);
 }
 
+@media screen and (max-width: 799px) {
+  .projects__item:hover {
+    -webkit-transform: none;
+            transform: none;
+    -webkit-box-shadow: -24px -24px 50px -24px rgba(0, 0, 0, 0.3);
+            box-shadow: -24px -24px 50px -24px rgba(0, 0, 0, 0.3);
+  }
+}
+
 .projects__item:hover .projects__thumb {
   opacity: 1;
 }
@@ -723,6 +735,13 @@ body {
 .projects__fave:hover {
   -webkit-transform: scale(1.5);
           transform: scale(1.5);
+}
+
+@media screen and (max-width: 799px) {
+  .projects__fave:hover {
+    -webkit-transform: none;
+            transform: none;
+  }
 }
 
 .projects__thumb {
