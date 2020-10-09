@@ -491,13 +491,18 @@ window.onload = function (e) {
     // Filter faves
     function filterFaves() {
         const btnFaves = document.querySelector('.filters__item.faves'),
-            btnAll = document.querySelector('.filters__item.all');
+            btnAll = document.querySelector('.filters__item.all'),
+            noFaves = document.querySelector('.message__noFaves');
 
         btnFaves.addEventListener('click', function () {
             projectItem.forEach(function (el) {
                 if (!el.classList.contains('faved')) {
                     el.style.display = "none";
-
+                    btnAll.classList.remove('selected');
+                    btnFaves.classList.add('selected');
+                    if (el.style.display = "none") {
+                        noFaves.style.display = "flex";
+                    }
                 } else {
                     el.style.display = "none";
                     setTimeout(() => {
@@ -505,6 +510,7 @@ window.onload = function (e) {
                     }, 100);
                     btnAll.classList.remove('selected');
                     btnFaves.classList.add('selected');
+
                 }
             })
         })
@@ -516,6 +522,7 @@ window.onload = function (e) {
                 }, 100);
                 btnAll.classList.add('selected');
                 btnFaves.classList.remove('selected');
+                noFaves.style.display = "none";
             })
 
         })
@@ -565,9 +572,9 @@ window.onload = function (e) {
 
     // Search
     function search() {
-        const searchInput = document.getElementById("search"),
-            cleanBtn = document.querySelector('.search__clean'),
-            noResults = document.querySelector('.search__noResults');
+        const noResults = document.querySelector('.message__noResults'),
+            searchInput = document.getElementById("search"),
+            cleanBtn = document.querySelector('.search__clean');
 
         searchInput.addEventListener('keyup', function (event) {
             const searchValue = event.target.value.toLowerCase();
