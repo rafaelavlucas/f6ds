@@ -517,6 +517,11 @@ window.onload = function (e) {
         })
         btnAll.addEventListener('click', function () {
 
+            document.querySelector('.search__input').value = "";
+            document.querySelector('.search__clean').style.display = "none";
+
+
+
             projectItem.forEach(function (el) {
                 el.style.display = "none";
                 setTimeout(() => {
