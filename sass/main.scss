@@ -129,7 +129,7 @@ body {
     justify-content: space-between;
 
     @include sm {
-        height: 130px;
+        height: 72px;
     }
 
     &__logo {
@@ -142,7 +142,6 @@ body {
         background-image: var(--f6logo);
 
         @include sm {
-            top: 0;
             width: 80px;
             height: 70px;
 
@@ -165,7 +164,7 @@ body {
         font-size: 40px;
 
         @include sm {
-            margin: 40px 0;
+            margin: 32px 0;
             font-size: 24px;
         }
     }
@@ -179,10 +178,7 @@ body {
     width: 100%;
 
     @include sm {
-
-        align-items: flex-end;
-        flex-direction: column-reverse;
-        justify-content: space-between;
+        //align-items: flex-end;
     }
 }
 
@@ -193,8 +189,8 @@ body {
     margin-left: 40px;
 
     @include sm {
-        margin-left: 0px;
-        margin-bottom: 24px;
+        margin-left: 16px;
+        //margin-left: 0px;
     }
 
     &__button {
@@ -207,6 +203,10 @@ body {
         border-radius: 30px;
         position: relative;
         z-index: 1;
+
+        @include sm {
+            width: 48px;
+        }
 
         span {
             background: var(--toggleBall);
@@ -222,7 +222,6 @@ body {
             background-position: center;
             background-image: var(--iconMode);
             box-shadow: var(--toggleShadow);
-
         }
     }
 
@@ -237,12 +236,16 @@ body {
         background-image: var(--iconBulb);
     }
 
-
     &.on {
         #{$this} {
             &__button {
                 span {
-                    transform: translateX(calc(100%));
+                    transform: translateX(100%);
+
+
+                    @include sm {
+                        transform: translateX(calc(100% - 7px));
+                    }
                 }
             }
         }
@@ -263,14 +266,14 @@ body {
 
     @include sm {
         width: 100%;
-        max-width: 400px;
+        max-width: 160px;
         align-self: center;
     }
 
     &__title {
         border-radius: 8px;
         display: flex;
-        height: 40px;
+        height: 100%;
         align-items: center;
         padding: 0 16px;
         position: relative;
@@ -303,7 +306,6 @@ body {
         z-index: -1;
         transition: all 0.3s 0.2s ease;
         border: 1px solid transparent;
-
     }
 
     &__item {
@@ -321,7 +323,6 @@ body {
     }
 
     &.open {
-
         #{$this} {
             &__title {
                 color: #EE7D4C;
@@ -365,7 +366,7 @@ body {
     position: relative;
 
     @include sm {
-        flex-direction: column-reverse;
+        //flex-direction: column-reverse;
     }
 }
 
@@ -494,6 +495,10 @@ body {
 .filters {
     display: flex;
 
+    @include sm {
+        //margin-bottom: 32px;
+    }
+
     &__item {
         display: inline-flex;
         align-items: center;
@@ -508,8 +513,13 @@ body {
         margin-left: 24px;
         transition: all 0.2s ease;
 
+        @include sm {
+            margin-left: 16px;
+        }
+
         &:first-child {
-            margin-left: 0px;
+
+            //margin-left: 0px;
         }
 
         &.selected {
@@ -531,9 +541,7 @@ body {
         }
     }
 
-    @include sm {
-        margin-bottom: 32px;
-    }
+
 }
 
 .projects {
@@ -546,8 +554,9 @@ body {
     justify-items: center;
 
     @include sm {
-        margin: 40px auto;
+        margin: 32px auto;
         grid-template-columns: 1fr;
+        grid-gap: 24px;
     }
 
     &__item {
@@ -596,7 +605,7 @@ body {
         }
 
         @include sm {
-            min-height: 300px;
+            min-height: 270px;
         }
 
     }
@@ -609,13 +618,17 @@ body {
         height: 40px;
         right: 24px;
         top: 24px;
-
         background-size: 24px;
         background-repeat: no-repeat;
         background-position: center;
         background-image: var(--iconHeart);
         z-index: 2;
         cursor: pointer;
+
+        @include sm {
+            right: 16px;
+            top: 16px;
+        }
 
         &:hover {
             transform: scale(1.5);
@@ -670,6 +683,10 @@ body {
         z-index: 3;
         font-weight: 300;
         width: 80%;
+
+        @include sm {
+            padding: 24px 0 0 16px;
+        }
     }
 
     &__color {
@@ -696,7 +713,7 @@ body {
     &__detailsContent {
         font-size: 18px;
         letter-spacing: 0.5px;
-        margin: 24px 24px;
+        margin: 24px;
         padding: 16px;
         border-radius: 8px;
         position: relative;
@@ -704,6 +721,10 @@ body {
         backdrop-filter: blur(5px);
         background-color: rgba(white, 0.1);
         border: 1px solid rgba(white, 0.3);
+
+        @include sm {
+            margin: 16px;
+        }
 
         input {
             opacity: 0;
@@ -814,6 +835,10 @@ body {
         grid-template-columns: repeat(3, 1fr);
         height: 56px;
         overflow: hidden;
+
+        @include sm {
+            height: 48px;
+        }
     }
 
     &__toolName {
