@@ -562,34 +562,6 @@ window.onload = function (e) {
         }
     }
 
-    // Dark Mode
-    function darkMode() {
-        const body = document.querySelector("body"),
-            toggle = document.querySelector(".toggle");
-        let getTheme = localStorage.getItem('themeDark');
-
-        toggle.addEventListener('click', changeTheme);
-
-        if (getTheme != "false") {
-            body.dataset.theme = "dark";
-            toggle.classList.add('on');
-            localStorage.setItem('themeDark', true);
-        };
-
-        function changeTheme() {
-            getTheme = localStorage.getItem('themeDark');
-            if (getTheme == "false") {
-                body.dataset.theme = "dark";
-                toggle.classList.add('on');
-                getTheme = localStorage.setItem('themeDark', true);
-            } else {
-                body.dataset.theme = "";
-                toggle.classList.remove('on');
-                getTheme = localStorage.setItem('themeDark', false);
-            }
-        };
-    }
-
     // Search
     function search() {
         const searchInput = document.getElementById("search"),
@@ -667,6 +639,34 @@ window.onload = function (e) {
         });
     }
 
+    // Dark Mode
+    function darkMode() {
+        const body = document.querySelector("body"),
+            toggle = document.querySelector(".toggle");
+        let getTheme = localStorage.getItem('themeDark');
+
+        toggle.addEventListener('click', changeTheme);
+
+        if (getTheme != "false") {
+            body.dataset.theme = "dark";
+            toggle.classList.add('on');
+            localStorage.setItem('themeDark', true);
+        };
+
+        function changeTheme() {
+            getTheme = localStorage.getItem('themeDark');
+            if (getTheme == "false") {
+                body.dataset.theme = "dark";
+                toggle.classList.add('on');
+                getTheme = localStorage.setItem('themeDark', true);
+            } else {
+                body.dataset.theme = "";
+                toggle.classList.remove('on');
+                getTheme = localStorage.setItem('themeDark', false);
+            }
+        };
+    }
+
     //////////////////
     // Call functions
     //////////////////
@@ -676,10 +676,8 @@ window.onload = function (e) {
     saveFaves();
     filterFaves();
     openProject();
-    copydetails();
-    darkMode();
     search();
     openDrop();
-
-
+    copydetails();
+    darkMode();
 }
