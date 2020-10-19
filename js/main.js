@@ -379,7 +379,7 @@ window.onload = function (e) {
                         <p class="projects__detail user">${el.user}</p>
                         <p class="projects__detail pass">${el.pass}</p>
                     </div> 
-                    
+
                     <div class="projects__copyClipboard">
                         Copied!
                     </div>
@@ -495,6 +495,8 @@ window.onload = function (e) {
             ifnoFaves();
 
             if(btnFaves.classList.contains('selected')) {
+                noFaves.style.display = "none";
+                
                 btnFaves.classList.remove('selected');
                 projectItem.forEach(function (el) {
                   
