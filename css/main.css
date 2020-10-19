@@ -65,6 +65,7 @@ body {
   background: var(--bodyBg);
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  overflow-x: hidden;
 }
 
 .wrapper {

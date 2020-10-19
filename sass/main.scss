@@ -112,12 +112,14 @@ body {
     font-family: $font;
     background: var(--bodyBg);
     transition: all 0.3s ease;
+    overflow-x: hidden;
 }
 
 .wrapper {
     @include margins();
     max-width: $maxWidthContent;
     margin: 0 auto;
+   
 }
 
 .nav {
