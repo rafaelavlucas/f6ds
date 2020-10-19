@@ -3,8 +3,7 @@ window.onload = function (e) {
         faveProjects = [];
 
     const noFaves = document.querySelector('.message__noFaves'),
-        noResults = document.querySelector('.message__noResults'),
-         btnFaves = document.querySelector('.faveBtn');;
+        noResults = document.querySelector('.message__noResults');
 
     const projects = [{
             id: 0,
@@ -374,17 +373,21 @@ window.onload = function (e) {
             <div class="projects__details">
                 <div class="projects__detailsContent">
                     <input type="text" class="inputCopy">
-                    
-                    <div class="projects__info">
-                        <p class="projects__detail user">${el.user}</p>
-                        <p class="projects__detail pass">${el.pass}</p>
-                    </div> 
-                    
                     <div class="projects__copyClipboard">
-                        Copied!
+                        copied!
                     </div>
-
-                    <a class="projects__stageLink" href="${el.url}" target="_blank"></a>
+                    <div class="projects__info">
+                        <a class="projects__detail link" href="${el.url}" target="_blank">Stage Link</a>
+                    </div>
+                    <div class="projects__info">
+                        <p class="projects__detail--title user">User:</p>
+                        <p class="projects__detail--text">${el.user}</p>
+    
+                    </div>
+                    <div class="projects__info">
+                        <p class="projects__detail--title pass">Password:</p>
+                        <p class="projects__detail--text">${el.pass}</p>
+                    </div>
                 </div>
                 <div class="projects__tools">
                 </div>
@@ -410,7 +413,7 @@ window.onload = function (e) {
 
     // Select and copy User and Password
     function copydetails() {
-        const text = document.querySelectorAll('.projects__detail'),
+        const text = document.querySelectorAll('.projects__detail--text'),
             copyClipboard = document.querySelectorAll('.projects__copyClipboard');
 
         text.forEach(function (element) {
@@ -489,37 +492,48 @@ window.onload = function (e) {
 
     // Filter faves
     function filterFaves() {
-       
+        const btnFaves = document.querySelector('.filters__item.faves'),
+            btnAll = document.querySelector('.filters__item.all');
 
         btnFaves.addEventListener('click', function () {
             ifnoFaves();
 
-            if(btnFaves.classList.contains('selected')) {
+            projectItem.forEach(function (el) {
+                if (!el.classList.contains('faved')) {
+                    el.style.display = "none";
+                    btnAll.classList.remove('selected');
+                    btnFaves.classList.add('selected');
+
+                } else {
+                    el.style.display = "none";
+                    setTimeout(() => {
+                        el.style.display = "flex";
+                    }, 100);
+                    btnAll.classList.remove('selected');
+                    btnFaves.classList.add('selected');
+
+                }
+            })
+        })
+        btnAll.addEventListener('click', function () {
+
+            document.querySelector('.search__input').value = "";
+            document.querySelector('.search__clean').style.display = "none";
+
+
+
+            projectItem.forEach(function (el) {
+                el.style.display = "none";
+                setTimeout(() => {
+                    el.style.display = "flex";
+                }, 100);
+
+                btnAll.classList.add('selected');
                 btnFaves.classList.remove('selected');
-                projectItem.forEach(function (el) {
-                  
-                        el.style.display = "none";
-                        setTimeout(() => {
-                            el.style.display = "flex";
-                        }, 100);
-                })
-            } else {
-                btnFaves.classList.add('selected');
-                projectItem.forEach(function (el) {
-                    if (!el.classList.contains('faved')) {
-                        el.style.display = "none";
-                    
-                    } else {
-                        el.style.display = "none";
-                        setTimeout(() => {
-                            el.style.display = "flex";
-                        }, 100);
-                    
-                       
-                    }
-                })
-            }
-        }) 
+                noResults.style.display = "none";
+                noFaves.style.display = "none";
+            })
+        })
     }
 
     function ifnoFaves() {
@@ -554,7 +568,6 @@ window.onload = function (e) {
             cleanBtn = document.querySelector('.search__clean');
 
         searchInput.addEventListener('keyup', function (event) {
-            btnFaves.classList.remove('selected');
             const searchValue = event.target.value.toLowerCase();
             cleanBtn.style.display = "none";
             noResults.style.display = "none";
