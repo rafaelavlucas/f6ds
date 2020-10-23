@@ -901,6 +901,12 @@ body {
   font-weight: 400;
 }
 
+@media screen and (max-width: 799px) {
+  .projects__copyClipboard {
+    right: 56px;
+  }
+}
+
 .projects__copyClipboard.show {
   opacity: 1;
   visibility: visible;
@@ -968,6 +974,12 @@ body {
   overflow: hidden;
 }
 
+@media screen and (max-width: 799px) {
+  .projects__stageLink {
+    width: 40%;
+  }
+}
+
 .projects__stageLink:before, .projects__stageLink:after {
   content: '';
   position: absolute;
@@ -1024,58 +1036,9 @@ body {
   }
 }
 
-.projects__toolName {
-  -webkit-transition: all 0.4s ease;
-  transition: all 0.4s ease;
-  position: absolute;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  -webkit-transform: translateY(200%);
-          transform: translateY(200%);
-  text-transform: capitalize;
-  margin-left: 32px;
-}
-
-.projects__toolName:before {
-  content: '';
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  left: -32px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.projects__toolName.axure:before {
-  background-image: url("/assets/axure.svg");
-}
-
-.projects__toolName.figma:before {
-  background-image: url("/assets/figma.svg");
-}
-
-.projects__toolName.invision:before {
-  background-image: url("/assets/invision.svg");
-}
-
-.projects__toolName.zeplin:before {
-  background-image: url("/assets/zeplin.svg");
-}
-
-.projects__toolTitle {
-  -webkit-transition: -webkit-transform 0.3s ease;
-  transition: -webkit-transform 0.3s ease;
-  transition: transform 0.3s ease;
-  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
-  -webkit-transform: translateY(0%);
-          transform: translateY(0%);
-}
-
 .projects__toolLink {
-  font-size: 16px;
+  font-size: 14px;
+  letter-spacing: 0.2px;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1093,18 +1056,100 @@ body {
   transition: transform 0.3s ease, background 0.4s ease, -webkit-transform 0.3s ease;
 }
 
+@media screen and (max-width: 799px) {
+  .projects__toolLink {
+    font-size: 12px;
+  }
+}
+
 .projects__toolLink:hover {
   background-color: var(--toolsHover);
 }
 
 .projects__toolLink:hover .projects__toolTitle {
-  -webkit-transform: translateY(-200%);
-          transform: translateY(-200%);
+  -webkit-transform: translateY(-60px);
+          transform: translateY(-60px);
 }
 
 .projects__toolLink:hover .projects__toolName {
   -webkit-transform: translateY(0%);
           transform: translateY(0%);
+}
+
+.projects__toolTitle {
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease;
+  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
+  font-weight: 400;
+  opacity: 0.5;
+  text-transform: uppercase;
+}
+
+.projects__toolName {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  position: absolute;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-transform: translateY(60px);
+          transform: translateY(60px);
+  text-transform: capitalize;
+  margin-left: 32px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media screen and (max-width: 799px) {
+  .projects__toolName {
+    margin-left: 24px;
+  }
+}
+
+.projects__toolName:before {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  left: -32px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@media screen and (max-width: 799px) {
+  .projects__toolName:before {
+    width: 16px;
+    height: 16px;
+    left: -24px;
+  }
+}
+
+.projects__toolName.axure:before {
+  background-image: url("/assets/axure.svg");
+}
+
+.projects__toolName.figma:before {
+  background-image: url("/assets/figma.svg");
+}
+
+.projects__toolName.invision:before {
+  background-image: url("/assets/invision.svg");
+}
+
+.projects__toolName.zeplin:before {
+  background-image: url("/assets/zeplin.svg");
 }
 
 .projects .active {

@@ -750,6 +750,10 @@ body {
         font-size: 14px;
         font-weight: 400;
 
+        @include sm {
+            right: 56px;
+        }
+
         &.show {
             opacity: 1;
             visibility: visible;
@@ -820,6 +824,10 @@ body {
         display: block;
         overflow: hidden;
 
+        @include sm {
+            width: 40%;
+        }
+
         &:before,
         &:after {
             content: '';
@@ -870,13 +878,60 @@ body {
         }
     }
 
+    &__toolLink {
+        font-size: 14px;
+        letter-spacing: 0.2px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: transform 0.3s ease, background 0.4s ease;
+
+        @include sm {
+            font-size: 12px;
+        }
+
+
+        &:hover {
+            background-color: var(--toolsHover);
+
+            #{$this} {
+                &__toolTitle {
+                    transform: translateY(-60px);
+                }
+
+                &__toolName {
+                    transform: translateY(0%);
+                }
+            }
+
+        }
+    }
+
+    &__toolTitle {
+        transition: transform 0.3s ease;
+        transform: translateY(0%);
+        font-weight: 400;
+        opacity: 0.5;
+
+        text-transform: uppercase;
+    }
+
     &__toolName {
         @include transition();
         position: absolute;
         user-select: none;
-        transform: translateY(200%);
+        transform: translateY(60px);
         text-transform: capitalize;
         margin-left: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @include sm {
+            margin-left: 24px;
+        }
 
         &:before {
             content: '';
@@ -887,6 +942,12 @@ body {
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
+
+            @include sm {
+                width: 16px;
+                height: 16px;
+                left: -24px;
+            }
         }
 
         &.axure {
@@ -914,36 +975,7 @@ body {
         }
     }
 
-    &__toolTitle {
-        transition: transform 0.3s ease;
-        transform: translateY(0%);
-    }
 
-    &__toolLink {
-        font-size: 16px;
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        transition: transform 0.3s ease, background 0.4s ease;
-
-
-        &:hover {
-            background-color: var(--toolsHover);
-
-            #{$this} {
-                &__toolTitle {
-                    transform: translateY(-200%);
-                }
-
-                &__toolName {
-                    transform: translateY(0%);
-                }
-            }
-
-        }
-    }
 
     .active {
         cursor: default;
