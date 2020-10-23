@@ -1164,7 +1164,7 @@ body {
 }
 
 .projects .active .projects__color {
-  opacity: 0.8;
+  opacity: 1;
 }
 
 .projects .active .projects__fave {
