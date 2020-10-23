@@ -108,7 +108,7 @@ body {
 
 @media screen and (max-width: 799px) {
   .nav__logo {
-    max-width: 80px;
+    max-width: 72px;
     width: 20%;
     height: 70px;
   }
@@ -164,7 +164,7 @@ body {
 
 @media screen and (max-width: 799px) {
   .toggle {
-    margin-left: 16px;
+    margin-left: 8px;
   }
 }
 
@@ -250,7 +250,7 @@ body {
 @media screen and (max-width: 799px) {
   .drop {
     width: 100%;
-    max-width: 160px;
+    max-width: 140px;
     -ms-flex-item-align: center;
         -ms-grid-row-align: center;
         align-self: center;
@@ -273,6 +273,12 @@ body {
   transition: border 0.2s 0.2s ease, color 0.2s ease;
 }
 
+@media screen and (max-width: 799px) {
+  .drop__title {
+    padding: 0 12px;
+  }
+}
+
 .drop__title:before {
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
@@ -285,6 +291,12 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-image: url("/assets/arrowDown.svg");
+}
+
+@media screen and (max-width: 799px) {
+  .drop__title:before {
+    right: 8px;
+  }
 }
 
 .drop__content {
@@ -372,7 +384,7 @@ body {
 
 @media screen and (max-width: 799px) {
   .faveBtn {
-    margin-left: 16px;
+    margin-left: 8px;
   }
 }
 
@@ -680,7 +692,7 @@ body {
 
 @media screen and (max-width: 799px) {
   .projects__item {
-    min-height: 270px;
+    min-height: 260px;
     max-width: 500px;
   }
 }
@@ -692,13 +704,13 @@ body {
   position: absolute;
   width: 40px;
   height: 40px;
-  right: 24px;
-  top: 24px;
+  right: 32px;
+  top: 26px;
   background-size: 24px;
   background-repeat: no-repeat;
   background-position: center;
   background-image: var(--iconHeart);
-  z-index: 2;
+  z-index: 3;
   cursor: pointer;
   opacity: 0.5;
   -webkit-transition: all 0.3s cubic-bezier(0.25, 0.1, 0.11, 1.45);
@@ -728,7 +740,7 @@ body {
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
   width: calc(100% - 48px);
-  height: calc(100% - 80px);
+  height: calc(100% - 92px);
   position: absolute;
   bottom: 0px;
   left: 24px;
@@ -736,6 +748,12 @@ body {
   overflow: hidden;
   z-index: 1;
   opacity: 0.5;
+}
+
+@media screen and (max-width: 799px) {
+  .projects__thumb {
+    height: calc(100% - 72px);
+  }
 }
 
 .projects__thumb img {
@@ -764,22 +782,21 @@ body {
 }
 
 .projects__title {
-  padding: 32px 0 0 24px;
+  padding: 32px 88px 32px 32px;
   z-index: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   color: var(--text);
-  font-size: 20px;
-  font-weight: normal;
-  z-index: 3;
-  font-weight: 300;
-  width: 80%;
+  font-size: 24px;
+  font-weight: 200;
+  z-index: 2;
 }
 
 @media screen and (max-width: 799px) {
   .projects__title {
-    padding: 24px 0 0 16px;
+    font-size: 20px;
+    padding: 24px 88px 24px 24px;
   }
 }
 
@@ -811,9 +828,8 @@ body {
 .projects__detailsContent {
   font-size: 16px;
   letter-spacing: 0.5px;
-  margin: 24px;
-  padding: 16px 0;
-  border-radius: 8px;
+  margin: 0 32px;
+  padding: 58px 0;
   position: relative;
   overflow: hidden;
   display: -webkit-box;
@@ -829,8 +845,21 @@ body {
 
 @media screen and (max-width: 799px) {
   .projects__detailsContent {
-    margin: 16px;
+    margin: 0 16px;
+    padding: 42px 0;
   }
+}
+
+.projects__detailsContent:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background-color: white;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  opacity: 0.25;
 }
 
 .projects__detailsContent input {
@@ -888,13 +917,15 @@ body {
   position: relative;
   padding: 0 4px;
   cursor: pointer;
-  border-radius: 2px;
   margin-left: 32px;
   margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 400;
   display: block;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  border-radius: 2px;
 }
 
 .projects__detail:last-child {
@@ -929,11 +960,11 @@ body {
 .projects__stageLink {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  position: relative;
-  width: 40px;
-  height: 40px;
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  right: 0;
   display: block;
-  opacity: 0.5;
   overflow: hidden;
 }
 
@@ -947,7 +978,7 @@ body {
   height: 100%;
   background-size: 24px;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center right;
   background-image: url("/assets/arrowRight.svg");
 }
 
@@ -955,10 +986,6 @@ body {
   opacity: 0;
   -webkit-transform: translateX(-32px);
           transform: translateX(-32px);
-}
-
-.projects__stageLink:hover {
-  opacity: 1;
 }
 
 .projects__stageLink:hover:before {
