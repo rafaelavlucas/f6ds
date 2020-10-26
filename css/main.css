@@ -330,7 +330,6 @@ body {
 
 .drop__item:hover {
   background-color: rgba(103, 103, 103, 0.15);
-  color: #7767D6;
 }
 
 .drop.open .drop__title {
