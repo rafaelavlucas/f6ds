@@ -2,7 +2,7 @@
 :root {
   --bodyBg: #ffffff;
   --headerBg: #e9e9e9;
-  --f6logo: url("/assets/logo2-black.svg");
+  --f6logo: url("/assets/logo-black.svg");
   --text: #3e3e3e;
   --toolsBg: #ffffff;
   --toolsHover: #e9e9e9;
@@ -22,7 +22,7 @@
 [data-theme="dark"] {
   --bodyBg: #3a3a3a;
   --headerBg: #2e2e2e;
-  --f6logo: url("/assets/logo2-white.svg");
+  --f6logo: url("/assets/logo-white.svg");
   --text: #f1f1f1;
   --toolsBg: #4b4b4b;
   --toolsHover: #393939;
@@ -330,11 +330,11 @@ body {
 
 .drop__item:hover {
   background-color: rgba(103, 103, 103, 0.15);
-  color: #F68A39;
+  color: #7767D6;
 }
 
 .drop.open .drop__title {
-  color: #F68A39;
+  color: #7767D6;
   border: 1px solid transparent;
   -webkit-box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.1);
           box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.1);
@@ -363,7 +363,7 @@ body {
 }
 
 .drop:hover .drop__title {
-  color: #F68A39;
+  color: #7767D6;
 }
 
 .faveBtn {
@@ -492,7 +492,7 @@ body {
 }
 
 .search__input:focus {
-  border-bottom: 1px solid #F68A39;
+  border-bottom: 1px solid #7767D6;
 }
 
 .search__input:focus::-webkit-input-placeholder {
@@ -610,6 +610,7 @@ body {
       grid-template-columns: repeat(auto-fill, minmax(410px, 1fr));
   grid-gap: 40px;
   justify-items: center;
+  padding-bottom: 80px;
 }
 
 @media screen and (max-width: 799px) {

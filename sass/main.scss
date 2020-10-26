@@ -3,7 +3,7 @@
 :root {
     --bodyBg: #ffffff;
     --headerBg: #e9e9e9;
-    --f6logo: url("/assets/logo2-black.svg");
+    --f6logo: url("/assets/logo-black.svg");
     --text: #3e3e3e;
     --toolsBg: #ffffff;
     --toolsHover: #e9e9e9;
@@ -27,7 +27,7 @@
 [data-theme="dark"] {
     --bodyBg: #3a3a3a;
     --headerBg: #2e2e2e;
-    --f6logo: url("/assets/logo2-white.svg");
+    --f6logo: url("/assets/logo-white.svg");
     --text: #f1f1f1;
     --toolsBg: #4b4b4b;
     --toolsHover: #393939;
@@ -54,7 +54,7 @@ sans-serif;
 
 // Colors
 
-$m-01: #F68A39;
+$m-01: #7767D6;
 $neu-08: #0e0e0e;
 $neu-09: #313131;
 
@@ -536,6 +536,7 @@ body {
     grid-template-columns: repeat(auto-fill, minmax(410px, 1fr));
     grid-gap: 40px;
     justify-items: center;
+    padding-bottom: 80px;
 
     @include sm {
         grid-template-columns: 1fr;
