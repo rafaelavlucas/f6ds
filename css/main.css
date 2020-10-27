@@ -1192,7 +1192,7 @@ body {
   opacity: 1;
 }
 
-.projects .active .projects__fave {
+.projects .active .projects__fave:before {
   background-image: url("/assets/heart-w.svg");
 }
 

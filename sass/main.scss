@@ -1011,7 +1011,9 @@ body {
             }
 
             &__fave {
-                background-image: url("/assets/heart-w.svg");
+                &:before {
+                    background-image: url("/assets/heart-w.svg");
+                }
             }
 
             &__title {
