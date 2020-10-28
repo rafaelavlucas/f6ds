@@ -3,22 +3,22 @@
 :root {
     --bodyBg: #ffffff;
     --headerBg: #e9e9e9;
-    --f6logo: url("/assets/logo-black.svg");
+    --f6logo: url("assets/logo-black.svg");
     --text: #3e3e3e;
     --toolsBg: #ffffff;
     --toolsHover: #e9e9e9;
-    --iconMode: url("/assets/sun.svg");
+    --iconMode: url("assets/sun.svg");
     --toggleBg: #d2d2d2;
     --toggleBall: #ffffff;
     --inputBg: #f4f4f4;
     --inputBorder: #e9e9e9;
     --dropBorder: #d2d2d2;
     --bgdropItem: ;
-    --iconClean: url("/assets/close-b.svg");
-    --iconSearch: url("/assets/search-b.svg");
+    --iconClean: url("assets/close-b.svg");
+    --iconSearch: url("assets/search-b.svg");
 
-    --iconHeart: url("/assets/heart-b.svg");
-    --iconHeartFill: url("/assets/heartFill-b.svg");
+    --iconHeart: url("assets/heart-b.svg");
+    --iconHeartFill: url("assets/heartFill-b.svg");
 
 
 
@@ -27,22 +27,22 @@
 [data-theme="dark"] {
     --bodyBg: #3a3a3a;
     --headerBg: #2e2e2e;
-    --f6logo: url("/assets/logo-white.svg");
+    --f6logo: url("assets/logo-white.svg");
     --text: #f1f1f1;
     --toolsBg: #4b4b4b;
     --toolsHover: #393939;
-    --iconMode: url("/assets/moon.svg");
+    --iconMode: url("assets/moon.svg");
     --toggleBg: #1d1d1d;
     --toggleShadow: 0px 0px 10px rgba(black, 0.5);
     --toggleBall: #606060;
     --inputBg: #2e2e2e;
     --inputBorder: #5b5b5b;
     --dropBorder: #5b5b5b;
-    --iconClean: url("/assets/close-w.svg");
-    --iconSearch: url("/assets/search-w.svg");
+    --iconClean: url("assets/close-w.svg");
+    --iconSearch: url("assets/search-w.svg");
 
-    --iconHeart: url("/assets/heart-w.svg");
-    --iconHeartFill: url("/assets/heartFill-w.svg");
+    --iconHeart: url("assets/heart-w.svg");
+    --iconHeartFill: url("assets/heartFill-w.svg");
 
 
 }
@@ -293,7 +293,7 @@ body {
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            background-image: url("/assets/arrowDown.svg");
+            background-image: url("assets/arrowDown.svg");
         }
     }
 
@@ -800,13 +800,13 @@ body {
 
             &.user {
                 &:before {
-                    background-image: url("/assets/user.svg");
+                    background-image: url("assets/user.svg");
                 }
             }
 
             &.pass {
                 &:before {
-                    background-image: url("/assets/key.svg");
+                    background-image: url("assets/key.svg");
                 }
             }
 
@@ -873,25 +873,25 @@ body {
 
         &.axure {
             &:before {
-                background-image: url("/assets/axure.svg");
+                background-image: url("assets/axure.svg");
             }
         }
 
         &.figma {
             &:before {
-                background-image: url("/assets/figma.svg");
+                background-image: url("assets/figma.svg");
             }
         }
 
         &.invision {
             &:before {
-                background-image: url("/assets/invision.svg");
+                background-image: url("assets/invision.svg");
             }
         }
 
         &.zeplin {
             &:before {
-                background-image: url("/assets/zeplin.svg");
+                background-image: url("assets/zeplin.svg");
             }
         }
     }
@@ -940,7 +940,7 @@ body {
             }
 
             &__fave {
-                background-image: url("/assets/heart-w.svg");
+                background-image: url("assets/heart-w.svg");
             }
 
             &__title {
@@ -974,7 +974,7 @@ body {
         &.faved {
             #{$this} {
                 &__fave {
-                    background-image: url("/assets/heartFill-w.svg");
+                    background-image: url("assets/heartFill-w.svg");
                 }
             }
         }
@@ -1027,7 +1027,7 @@ body {
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
-        background-image: url("/assets/arrowRight.svg");
+        background-image: url("assets/arrowRight.svg");
         opacity: 0;
     }
 

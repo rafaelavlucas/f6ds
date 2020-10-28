@@ -1,4 +1,5 @@
 window.onload = function (e) {
+  const baseUrl = 'http://20.71.89.126:1337'
     let projectItem = "",
         faveProjects = [];
 
@@ -6,368 +7,372 @@ window.onload = function (e) {
         noResults = document.querySelector('.message__noResults'),
          btnFaves = document.querySelector('.faveBtn');;
 
-    const projects = [{
-            id: 0,
-            client: "EDP Digital Platform",
-            thumb: "assets/thumbs/edp.jpg",
-            color: "#F6334f",
-            url: "https://google.com",
-            user: "f6ds_usr",
-            pass: "aRfvbGt67Hj",
-            tools: [{
-                    title: "Inspect",
-                    name: "zeplin",
-                    link: "https://app.zeplin.io"
-                },
-                {
-                    title: "Prototype",
-                    name: "invision",
-                    link: "https://www.invisionapp.com"
-                },
-                {
-                    title: "Wireframes",
-                    name: "figma",
-                    link: "https://www.figma.com/"
-                },
-            ]
-        },
-        {
-            id: 1,
-            client: "Portgás",
-            thumb: "assets/thumbs/portgas.jpg",
-            color: "#003087",
-            url: "https://google.com",
-            user: "cenas_usr",
-            pass: "gtYhnJK78Sd",
-            tools: [{
-                    title: "Inspect",
-                    name: "zeplin",
-                    link: "https://app.zeplin.io"
-                },
-                {
-                    title: "Prototype",
-                    name: "figma",
-                    link: "https://www.figma.com/"
-                },
-                {
-                    title: "Wireframes",
-                    name: "axure",
-                    link: "https://www.axure.com"
-                }
-            ]
-        },
-        {
-            id: 2,
-            client: "McDonald's",
-            thumb: "assets/thumbs/mcdonalds.jpg",
-            color: "#ffbc0d",
-            url: "https://google.com",
-            user: "cenas_usr",
-            pass: "gtYhnJK78Sd",
-            tools: [{
-                    title: "Inspect",
-                    name: "zeplin",
-                    link: "https://app.zeplin.io"
-                },
-                {
-                    title: "Prototype",
-                    name: "figma",
-                    link: "https://www.figma.com/"
-                },
-                {
-                    title: "Wireframes",
-                    name: "axure",
-                    link: "https://www.axure.com"
-                }
-            ]
-        },
-        {
-            id: 3,
-            client: "CUF",
-            thumb: "assets/thumbs/cuf.jpg",
-            color: "#00a2ce",
-            url: "https://google.com",
-            user: "cenas_usr",
-            pass: "gtYhnJK78Sd",
-            tools: [{
-                    title: "Inspect",
-                    name: "zeplin",
-                    link: "https://app.zeplin.io"
-                },
-                {
-                    title: "Prototype",
-                    name: "figma",
-                    link: "https://www.figma.com/"
-                },
-                {
-                    title: "Wireframes",
-                    name: "axure",
-                    link: "https://www.axure.com"
-                }
-            ]
-        },
-        {
-            id: 4,
-            client: "AICEP",
-            thumb: "assets/thumbs/aicep.jpg",
-            color: "#00A4B4",
-            url: "https://google.com",
-            user: "cenas_usr",
-            pass: "gtYhnJK78Sd",
-            tools: [{
-                    title: "Inspect",
-                    name: "zeplin",
-                    link: "https://app.zeplin.io"
-                },
-                {
-                    title: "Prototype",
-                    name: "figma",
-                    link: "https://www.figma.com/"
-                },
-                {
-                    title: "Wireframes",
-                    name: "axure",
-                    link: "https://www.axure.com"
-                }
-            ]
-        },
-        {
-            id: 5,
-            client: "Ferbar",
-            thumb: "assets/thumbs/ferbar.jpg",
-            color: "#ed2424",
-            url: "https://google.com",
-            user: "cenas_usr",
-            pass: "gtYhnJK78Sd",
-            tools: [{
-                    title: "Inspect",
-                    name: "zeplin",
-                    link: "https://app.zeplin.io"
-                },
-                {
-                    title: "Prototype",
-                    name: "figma",
-                    link: "https://www.figma.com/"
-                },
-                {
-                    title: "Wireframes",
-                    name: "axure",
-                    link: "https://www.axure.com"
-                }
-            ]
-        },
-        {
-            id: 6,
-            client: "Ageas Seguros",
-            thumb: "assets/thumbs/ageas.jpg",
-            color: "#12A3BB",
-            url: "https://google.com",
-            user: "cenas_usr",
-            pass: "gtYhnJK78Sd",
-            tools: [{
-                    title: "Inspect",
-                    name: "zeplin",
-                    link: "https://app.zeplin.io"
-                },
-                {
-                    title: "Prototype",
-                    name: "figma",
-                    link: "https://www.figma.com/"
-                },
-                {
-                    title: "Wireframes",
-                    name: "axure",
-                    link: "https://www.axure.com"
-                }
-            ]
-        },
-        {
-            id: 7,
-            client: "Ageas Portugal",
-            thumb: "assets/thumbs/ageaspt.jpg",
-            color: "#d30773",
-            url: "https://google.com",
-            user: "cenas_usr",
-            pass: "gtYhnJK78Sd",
-            tools: [{
-                    title: "Inspect",
-                    name: "zeplin",
-                    link: "https://app.zeplin.io"
-                },
-                {
-                    title: "Prototype",
-                    name: "figma",
-                    link: "https://www.figma.com/"
-                },
-                {
-                    title: "Wireframes",
-                    name: "axure",
-                    link: "https://www.axure.com"
-                }
-            ]
-        },
-        {
-            id: 8,
-            client: "Vodafone",
-            thumb: "assets/thumbs/vodafone.jpg",
-            color: "#e60000",
-            url: "https://google.com",
-            user: "cenas_usr",
-            pass: "gtYhnJK78Sd",
-            tools: [{
-                    title: "Inspect",
-                    name: "zeplin",
-                    link: "https://app.zeplin.io"
-                },
-                {
-                    title: "Prototype",
-                    name: "figma",
-                    link: "https://www.figma.com/"
-                },
-                {
-                    title: "Wireframes",
-                    name: "axure",
-                    link: "https://www.axure.com"
-                }
-            ]
-        },
-        {
-            id: 9,
-            client: "Seguro Directo",
-            thumb: "assets/thumbs/segurodirecto.jpg",
-            color: "#2fc9da",
-            url: "https://google.com",
-            user: "cenas_usr",
-            pass: "gtYhnJK78Sd",
-            tools: [{
-                    title: "Inspect",
-                    name: "zeplin",
-                    link: "https://app.zeplin.io"
-                },
-                {
-                    title: "Prototype",
-                    name: "figma",
-                    link: "https://www.figma.com/"
-                },
-                {
-                    title: "Wireframes",
-                    name: "axure",
-                    link: "https://www.axure.com"
-                }
-            ]
-        },
-        {
-            id: 10,
-            client: "Porto Business School",
-            thumb: "assets/thumbs/pbs.jpg",
-            color: "#192aea",
-            url: "https://google.com",
-            user: "cenas_usr",
-            pass: "gtYhnJK78Sd",
-            tools: [{
-                    title: "Inspect",
-                    name: "zeplin",
-                    link: "https://app.zeplin.io"
-                },
-                {
-                    title: "Prototype",
-                    name: "figma",
-                    link: "https://www.figma.com/"
-                },
-                {
-                    title: "Wireframes",
-                    name: "axure",
-                    link: "https://www.axure.com"
-                }
-            ]
-        },
-        {
-            id: 11,
-            client: "Porto Bay",
-            thumb: "assets/thumbs/portobay.jpg",
-            color: "#3e91b1",
-            url: "https://google.com",
-            user: "cenas_usr",
-            pass: "gtYhnJK78Sd",
-            tools: [{
-                    title: "Inspect",
-                    name: "zeplin",
-                    link: "https://app.zeplin.io"
-                },
-                {
-                    title: "Prototype",
-                    name: "figma",
-                    link: "https://www.figma.com/"
-                },
-                {
-                    title: "Wireframes",
-                    name: "axure",
-                    link: "https://www.axure.com"
-                }
-            ]
-        },
-        {
-            id: 12,
-            client: "Médis",
-            thumb: "assets/thumbs/medis.jpg",
-            color: "#11bba1",
-            url: "https://google.com",
-            user: "cenas_usr",
-            pass: "gtYhnJK78Sd",
-            tools: [{
-                    title: "Inspect",
-                    name: "zeplin",
-                    link: "https://app.zeplin.io"
-                },
-                {
-                    title: "Prototype",
-                    name: "figma",
-                    link: "https://www.figma.com/"
-                },
-                {
-                    title: "Wireframes",
-                    name: "axure",
-                    link: "https://www.axure.com"
-                }
-            ]
-        },
-        {
-            id: 13,
-            client: "Entreposto",
-            thumb: "assets/thumbs/entreposto.jpg",
-            color: "#f51e1e",
-            url: "https://google.com",
-            user: "cenas_usr",
-            pass: "gtYhnJK78Sd",
-            tools: [{
-                    title: "Inspect",
-                    name: "zeplin",
-                    link: "https://app.zeplin.io"
-                },
-                {
-                    title: "Prototype",
-                    name: "figma",
-                    link: "https://www.figma.com/"
-                },
-                {
-                    title: "Wireframes",
-                    name: "axure",
-                    link: "https://www.axure.com"
-                }
-            ]
-        },
+    // const projects = [{
+    //         id: 0,
+    //         client: "EDP Digital Platform",
+    //         thumb: "assets/thumbs/edp.jpg",
+    //         color: "#F6334f",
+    //         url: "https://google.com",
+    //         user: "f6ds_usr",
+    //         pass: "aRfvbGt67Hj",
+    //         tools: [{
+    //                 title: "Inspect",
+    //                 name: "zeplin",
+    //                 link: "https://app.zeplin.io"
+    //             },
+    //             {
+    //                 title: "Prototype",
+    //                 name: "invision",
+    //                 link: "https://www.invisionapp.com"
+    //             },
+    //             {
+    //                 title: "Wireframes",
+    //                 name: "figma",
+    //                 link: "https://www.figma.com/"
+    //             },
+    //         ]
+    //     },
+    //     {
+    //         id: 1,
+    //         client: "Portgás",
+    //         thumb: "assets/thumbs/portgas.jpg",
+    //         color: "#003087",
+    //         url: "https://google.com",
+    //         user: "cenas_usr",
+    //         pass: "gtYhnJK78Sd",
+    //         tools: [{
+    //                 title: "Inspect",
+    //                 name: "zeplin",
+    //                 link: "https://app.zeplin.io"
+    //             },
+    //             {
+    //                 title: "Prototype",
+    //                 name: "figma",
+    //                 link: "https://www.figma.com/"
+    //             },
+    //             {
+    //                 title: "Wireframes",
+    //                 name: "axure",
+    //                 link: "https://www.axure.com"
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         id: 2,
+    //         client: "McDonald's",
+    //         thumb: "assets/thumbs/mcdonalds.jpg",
+    //         color: "#ffbc0d",
+    //         url: "https://google.com",
+    //         user: "cenas_usr",
+    //         pass: "gtYhnJK78Sd",
+    //         tools: [{
+    //                 title: "Inspect",
+    //                 name: "zeplin",
+    //                 link: "https://app.zeplin.io"
+    //             },
+    //             {
+    //                 title: "Prototype",
+    //                 name: "figma",
+    //                 link: "https://www.figma.com/"
+    //             },
+    //             {
+    //                 title: "Wireframes",
+    //                 name: "axure",
+    //                 link: "https://www.axure.com"
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         id: 3,
+    //         client: "CUF",
+    //         thumb: "assets/thumbs/cuf.jpg",
+    //         color: "#00a2ce",
+    //         url: "https://google.com",
+    //         user: "cenas_usr",
+    //         pass: "gtYhnJK78Sd",
+    //         tools: [{
+    //                 title: "Inspect",
+    //                 name: "zeplin",
+    //                 link: "https://app.zeplin.io"
+    //             },
+    //             {
+    //                 title: "Prototype",
+    //                 name: "figma",
+    //                 link: "https://www.figma.com/"
+    //             },
+    //             {
+    //                 title: "Wireframes",
+    //                 name: "axure",
+    //                 link: "https://www.axure.com"
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         id: 4,
+    //         client: "AICEP",
+    //         thumb: "assets/thumbs/aicep.jpg",
+    //         color: "#00A4B4",
+    //         url: "https://google.com",
+    //         user: "cenas_usr",
+    //         pass: "gtYhnJK78Sd",
+    //         tools: [{
+    //                 title: "Inspect",
+    //                 name: "zeplin",
+    //                 link: "https://app.zeplin.io"
+    //             },
+    //             {
+    //                 title: "Prototype",
+    //                 name: "figma",
+    //                 link: "https://www.figma.com/"
+    //             },
+    //             {
+    //                 title: "Wireframes",
+    //                 name: "axure",
+    //                 link: "https://www.axure.com"
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         id: 5,
+    //         client: "Ferbar",
+    //         thumb: "assets/thumbs/ferbar.jpg",
+    //         color: "#ed2424",
+    //         url: "https://google.com",
+    //         user: "cenas_usr",
+    //         pass: "gtYhnJK78Sd",
+    //         tools: [{
+    //                 title: "Inspect",
+    //                 name: "zeplin",
+    //                 link: "https://app.zeplin.io"
+    //             },
+    //             {
+    //                 title: "Prototype",
+    //                 name: "figma",
+    //                 link: "https://www.figma.com/"
+    //             },
+    //             {
+    //                 title: "Wireframes",
+    //                 name: "axure",
+    //                 link: "https://www.axure.com"
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         id: 6,
+    //         client: "Ageas Seguros",
+    //         thumb: "assets/thumbs/ageas.jpg",
+    //         color: "#12A3BB",
+    //         url: "https://google.com",
+    //         user: "cenas_usr",
+    //         pass: "gtYhnJK78Sd",
+    //         tools: [{
+    //                 title: "Inspect",
+    //                 name: "zeplin",
+    //                 link: "https://app.zeplin.io"
+    //             },
+    //             {
+    //                 title: "Prototype",
+    //                 name: "figma",
+    //                 link: "https://www.figma.com/"
+    //             },
+    //             {
+    //                 title: "Wireframes",
+    //                 name: "axure",
+    //                 link: "https://www.axure.com"
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         id: 7,
+    //         client: "Ageas Portugal",
+    //         thumb: "assets/thumbs/ageaspt.jpg",
+    //         color: "#d30773",
+    //         url: "https://google.com",
+    //         user: "cenas_usr",
+    //         pass: "gtYhnJK78Sd",
+    //         tools: [{
+    //                 title: "Inspect",
+    //                 name: "zeplin",
+    //                 link: "https://app.zeplin.io"
+    //             },
+    //             {
+    //                 title: "Prototype",
+    //                 name: "figma",
+    //                 link: "https://www.figma.com/"
+    //             },
+    //             {
+    //                 title: "Wireframes",
+    //                 name: "axure",
+    //                 link: "https://www.axure.com"
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         id: 8,
+    //         client: "Vodafone",
+    //         thumb: "assets/thumbs/vodafone.jpg",
+    //         color: "#e60000",
+    //         url: "https://google.com",
+    //         user: "cenas_usr",
+    //         pass: "gtYhnJK78Sd",
+    //         tools: [{
+    //                 title: "Inspect",
+    //                 name: "zeplin",
+    //                 link: "https://app.zeplin.io"
+    //             },
+    //             {
+    //                 title: "Prototype",
+    //                 name: "figma",
+    //                 link: "https://www.figma.com/"
+    //             },
+    //             {
+    //                 title: "Wireframes",
+    //                 name: "axure",
+    //                 link: "https://www.axure.com"
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         id: 9,
+    //         client: "Seguro Directo",
+    //         thumb: "assets/thumbs/segurodirecto.jpg",
+    //         color: "#2fc9da",
+    //         url: "https://google.com",
+    //         user: "cenas_usr",
+    //         pass: "gtYhnJK78Sd",
+    //         tools: [{
+    //                 title: "Inspect",
+    //                 name: "zeplin",
+    //                 link: "https://app.zeplin.io"
+    //             },
+    //             {
+    //                 title: "Prototype",
+    //                 name: "figma",
+    //                 link: "https://www.figma.com/"
+    //             },
+    //             {
+    //                 title: "Wireframes",
+    //                 name: "axure",
+    //                 link: "https://www.axure.com"
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         id: 10,
+    //         client: "Porto Business School",
+    //         thumb: "assets/thumbs/pbs.jpg",
+    //         color: "#192aea",
+    //         url: "https://google.com",
+    //         user: "cenas_usr",
+    //         pass: "gtYhnJK78Sd",
+    //         tools: [{
+    //                 title: "Inspect",
+    //                 name: "zeplin",
+    //                 link: "https://app.zeplin.io"
+    //             },
+    //             {
+    //                 title: "Prototype",
+    //                 name: "figma",
+    //                 link: "https://www.figma.com/"
+    //             },
+    //             {
+    //                 title: "Wireframes",
+    //                 name: "axure",
+    //                 link: "https://www.axure.com"
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         id: 11,
+    //         client: "Porto Bay",
+    //         thumb: "assets/thumbs/portobay.jpg",
+    //         color: "#3e91b1",
+    //         url: "https://google.com",
+    //         user: "cenas_usr",
+    //         pass: "gtYhnJK78Sd",
+    //         tools: [{
+    //                 title: "Inspect",
+    //                 name: "zeplin",
+    //                 link: "https://app.zeplin.io"
+    //             },
+    //             {
+    //                 title: "Prototype",
+    //                 name: "figma",
+    //                 link: "https://www.figma.com/"
+    //             },
+    //             {
+    //                 title: "Wireframes",
+    //                 name: "axure",
+    //                 link: "https://www.axure.com"
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         id: 12,
+    //         client: "Médis",
+    //         thumb: "assets/thumbs/medis.jpg",
+    //         color: "#11bba1",
+    //         url: "https://google.com",
+    //         user: "cenas_usr",
+    //         pass: "gtYhnJK78Sd",
+    //         tools: [{
+    //                 title: "Inspect",
+    //                 name: "zeplin",
+    //                 link: "https://app.zeplin.io"
+    //             },
+    //             {
+    //                 title: "Prototype",
+    //                 name: "figma",
+    //                 link: "https://www.figma.com/"
+    //             },
+    //             {
+    //                 title: "Wireframes",
+    //                 name: "axure",
+    //                 link: "https://www.axure.com"
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         id: 13,
+    //         client: "Entreposto",
+    //         thumb: "assets/thumbs/entreposto.jpg",
+    //         color: "#f51e1e",
+    //         url: "https://google.com",
+    //         user: "cenas_usr",
+    //         pass: "gtYhnJK78Sd",
+    //         tools: [{
+    //                 title: "Inspect",
+    //                 name: "zeplin",
+    //                 link: "https://app.zeplin.io"
+    //             },
+    //             {
+    //                 title: "Prototype",
+    //                 name: "figma",
+    //                 link: "https://www.figma.com/"
+    //             },
+    //             {
+    //                 title: "Wireframes",
+    //                 name: "axure",
+    //                 link: "https://www.axure.com"
+    //             }
+    //         ]
+    //     },
 
-    ];
+    // ];
 
     // Add Projects
-    function addProjects() {
+    
+    
+    async function addProjects() {
+      const json = await fetch(`${baseUrl}/projects`)
+      const projects = await json.json()
         projects.forEach(function (el) {
-
+          
             let template = `
             <div class="projects__item" data-id="${el.id}">
             <span class="projects__fave"></span>
     
-            <figure class="projects__thumb" style="background-color:${el.color}"> <img src="${el.thumb}" alt=""></figure>
+            <figure class="projects__thumb" style="background-color:${el.color}"> <img src="${baseUrl}${el.thumb.formats.large.url}" alt=""></figure>
             <span  class="projects__color" style="background-color:${el.color}"></span>
             <h2 class="projects__title">${el.client}</h2>
     
@@ -401,11 +406,15 @@ window.onload = function (e) {
                     <p class="projects__toolName ${tool.name}">${tool.name}</p>
                 </a>`;
 
-                document.querySelectorAll(".projects__tools")[el.id].insertAdjacentHTML("beforeend", template2);
+                document.querySelector(`.projects__item[data-id="${el.id}"] .projects__tools`).insertAdjacentHTML("beforeend", template2);
             })
 
 
         });
+        saveFaves();
+        search();
+        openProject();
+        copydetails();
     }
 
     // Select and copy User and Password
@@ -662,11 +671,7 @@ window.onload = function (e) {
 
     addProjects();
     addFave();
-    saveFaves();
     filterFaves();
-    openProject();
-    search();
     openDrop();
-    copydetails();
     darkMode();
 }
