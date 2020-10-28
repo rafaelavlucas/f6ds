@@ -976,6 +976,12 @@ body {
             }
         }
 
+        &.AdobeXD {
+            &:before {
+                background-image: url("/assets/adobexd.svg");
+            }
+        }
+
         &.axure,
         &.Axure {
             &:before {
