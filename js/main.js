@@ -1,5 +1,5 @@
 window.onload = function (e) {
-    const baseUrl = 'https://20.71.89.126:1337'
+    const baseUrl = 'http://20.71.89.126:1337'
     let projectItem = "",
         faveProjects = [];
 
