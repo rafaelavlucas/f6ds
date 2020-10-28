@@ -1166,6 +1166,10 @@ body {
   }
 }
 
+.projects__toolName.AdobeXD:before {
+  background-image: url("/assets/adobexd.svg");
+}
+
 .projects__toolName.axure:before, .projects__toolName.Axure:before {
   background-image: url("/assets/axure.svg");
 }
