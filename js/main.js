@@ -1,5 +1,6 @@
 window.onload = function (e) {
   const baseUrl = 'http://20.71.89.126:1337'
+  let projects = []
     let projectItem = "",
         faveProjects = [];
 
@@ -365,7 +366,8 @@ window.onload = function (e) {
     
     async function addProjects() {
       const json = await fetch(`${baseUrl}/projects`)
-      const projects = await json.json()
+      const dbProjects = await json.json()
+        projects = dbProjects
         projects.forEach(function (el) {
           
             let template = `
@@ -415,6 +417,9 @@ window.onload = function (e) {
         search();
         openProject();
         copydetails();
+        addFave();
+        filterFaves();
+        openDrop();
     }
 
     // Select and copy User and Password
@@ -670,8 +675,5 @@ window.onload = function (e) {
     //////////////////
 
     addProjects();
-    addFave();
-    filterFaves();
-    openDrop();
     darkMode();
 }
