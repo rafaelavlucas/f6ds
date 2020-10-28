@@ -2,41 +2,41 @@
 :root {
   --bodyBg: #ffffff;
   --headerBg: #e9e9e9;
-  --f6logo: url("../assets/logo-black.svg");
+  --f6logo: url("/assets/logo-black.svg");
   --text: #3e3e3e;
   --toolsBg: #ffffff;
   --toolsHover: #e9e9e9;
-  --iconMode: url("../assets/sun.svg");
+  --iconMode: url("/assets/sun.svg");
   --toggleBg: #d2d2d2;
   --toggleBall: #ffffff;
   --inputBg: #f4f4f4;
   --inputBorder: #e9e9e9;
   --dropBorder: #d2d2d2;
   --bgdropItem: ;
-  --iconClean: url("../assets/close-b.svg");
-  --iconSearch: url("../assets/search-b.svg");
-  --iconHeart: url("../assets/heart-b.svg");
-  --iconHeartFill: url("../assets/heartFill-b.svg");
+  --iconClean: url("/assets/close-b.svg");
+  --iconSearch: url("/assets/search-b.svg");
+  --iconHeart: url("/assets/heart-b.svg");
+  --iconHeartFill: url("/assets/heartFill-b.svg");
 }
 
 [data-theme="dark"] {
   --bodyBg: #3a3a3a;
   --headerBg: #2e2e2e;
-  --f6logo: url("../assets/logo-white.svg");
+  --f6logo: url("/assets/logo-white.svg");
   --text: #f1f1f1;
   --toolsBg: #4b4b4b;
   --toolsHover: #393939;
-  --iconMode: url("../assets/moon.svg");
+  --iconMode: url("/assets/moon.svg");
   --toggleBg: #1d1d1d;
   --toggleShadow: 0px 0px 10px rgba(black, 0.5);
   --toggleBall: #606060;
   --inputBg: #2e2e2e;
   --inputBorder: #5b5b5b;
   --dropBorder: #5b5b5b;
-  --iconClean: url("../assets/close-w.svg");
-  --iconSearch: url("../assets/search-w.svg");
-  --iconHeart: url("../assets/heart-w.svg");
-  --iconHeartFill: url("../assets/heartFill-w.svg");
+  --iconClean: url("/assets/close-w.svg");
+  --iconSearch: url("/assets/search-w.svg");
+  --iconHeart: url("/assets/heart-w.svg");
+  --iconHeartFill: url("/assets/heartFill-w.svg");
 }
 
 * {
@@ -297,7 +297,7 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url("../assets/arrowDown.svg");
+  background-image: url("/assets/arrowDown.svg");
 }
 
 @media screen and (max-width: 799px) {
@@ -322,7 +322,6 @@ body {
 }
 
 .drop__item {
-  padding: 0 16px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -337,6 +336,11 @@ body {
 
 .drop__item:hover {
   background-color: rgba(103, 103, 103, 0.15);
+}
+
+.drop__item a {
+  padding: 0 16px;
+  width: 100%;
 }
 
 .drop.open .drop__title {
@@ -407,7 +411,7 @@ body {
 }
 
 .faveBtn.selected:before {
-  background-image: url("..../assets/heartFill-c.svg");
+  background-image: url("../assets/heartFill-c.svg");
 }
 
 .tools {
@@ -976,11 +980,11 @@ body {
 }
 
 .projects__detail.user:before {
-  background-image: url("../assets/user.svg");
+  background-image: url("/assets/user.svg");
 }
 
 .projects__detail.pass:before {
-  background-image: url("../assets/key.svg");
+  background-image: url("/assets/key.svg");
 }
 
 .projects__detail:hover, .projects__detail.selected {
@@ -1016,7 +1020,7 @@ body {
   background-size: 24px;
   background-repeat: no-repeat;
   background-position: center right;
-  background-image: url("../assets/arrowRight.svg");
+  background-image: url("/assets/arrowRight.svg");
 }
 
 .projects__stageLink:after {
@@ -1161,20 +1165,20 @@ body {
   }
 }
 
-.projects__toolName.axure:before {
-  background-image: url("../assets/axure.svg");
+.projects__toolName.axure:before, .projects__toolName.Axure:before {
+  background-image: url("/assets/axure.svg");
 }
 
-.projects__toolName.figma:before {
-  background-image: url("../assets/figma.svg");
+.projects__toolName.figma:before, .projects__toolName.Figma:before {
+  background-image: url("/assets/figma.svg");
 }
 
-.projects__toolName.invision:before {
-  background-image: url("../assets/invision.svg");
+.projects__toolName.invision:before, .projects__toolName.Invision:before {
+  background-image: url("/assets/invision.svg");
 }
 
-.projects__toolName.zeplin:before {
-  background-image: url("../assets/zeplin.svg");
+.projects__toolName.zeplin:before, .projects__toolName.Zeplin:before {
+  background-image: url("/assets/zeplin.svg");
 }
 
 .projects .active {
@@ -1193,7 +1197,7 @@ body {
 }
 
 .projects .active .projects__fave:before {
-  background-image: url("../assets/heart-w.svg");
+  background-image: url("/assets/heart-w.svg");
 }
 
 .projects .active .projects__title {
@@ -1224,7 +1228,7 @@ body {
 }
 
 .projects .active.faved .projects__fave:before {
-  background-image: url("../assets/heartFill-w.svg");
+  background-image: url("/assets/heartFill-w.svg");
 }
 
 .projects .faved .projects__fave {

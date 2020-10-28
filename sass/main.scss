@@ -273,7 +273,6 @@ body {
         width: 100%;
         max-width: 140px;
         align-self: center;
-
     }
 
     &__title {
@@ -323,7 +322,7 @@ body {
     }
 
     &__item {
-        padding: 0 16px;
+
         display: flex;
         align-items: center;
         height: 0px;
@@ -332,6 +331,11 @@ body {
 
         &:hover {
             background-color: rgba(#676767, 0.15);
+        }
+
+        a {
+            padding: 0 16px;
+            width: 100%
         }
     }
 
