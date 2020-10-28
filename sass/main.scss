@@ -971,31 +971,34 @@ body {
             }
         }
 
-        &.axure {
+        &.axure,
+        &.Axure {
             &:before {
                 background-image: url("/assets/axure.svg");
             }
         }
 
-        &.figma {
+        &.figma,
+        &.Figma {
             &:before {
                 background-image: url("/assets/figma.svg");
             }
         }
 
-        &.invision {
+        &.invision,
+        &.Invision {
             &:before {
                 background-image: url("/assets/invision.svg");
             }
         }
 
-        &.zeplin {
+        &.zeplin,
+        &.Zeplin {
             &:before {
                 background-image: url("/assets/zeplin.svg");
             }
         }
     }
-
 
     .active {
         cursor: default;

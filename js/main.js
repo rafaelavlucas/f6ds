@@ -5,7 +5,7 @@ window.onload = function (e) {
 
     const noFaves = document.querySelector('.message__noFaves'),
         noResults = document.querySelector('.message__noResults'),
-        btnFaves = document.querySelector('.faveBtn');;
+        btnFaves = document.querySelector('.faveBtn');
 
     // const projects = [{
     //         id: 0,
