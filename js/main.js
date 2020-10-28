@@ -365,7 +365,7 @@ window.onload = function (e) {
 
 
     async function addProjects() {
-      const json = await fetch(`${baseUrl}/projects?sort=created_at:desc`)
+      const json = await fetch(`${baseUrl}/projects?_sort=created_at:desc`)
       const dbProjects = await json.json()
         projects = dbProjects
         projects.forEach(function (el) {
