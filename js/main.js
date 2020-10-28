@@ -6,7 +6,7 @@ window.onload = function (e) {
 
     const noFaves = document.querySelector('.message__noFaves'),
         noResults = document.querySelector('.message__noResults'),
-         btnFaves = document.querySelector('.faveBtn');;
+        btnFaves = document.querySelector('.faveBtn');
 
     // const projects = [{
     //         id: 0,
@@ -362,14 +362,14 @@ window.onload = function (e) {
     // ];
 
     // Add Projects
-    
-    
+
+
     async function addProjects() {
       const json = await fetch(`${baseUrl}/projects`)
       const dbProjects = await json.json()
         projects = dbProjects
         projects.forEach(function (el) {
-          
+
             let template = `
             <div class="projects__item" data-id="${el.id}">
             <span class="projects__fave"></span>
@@ -503,39 +503,39 @@ window.onload = function (e) {
 
     // Filter faves
     function filterFaves() {
-       
+
 
         btnFaves.addEventListener('click', function () {
             ifnoFaves();
 
-            if(btnFaves.classList.contains('selected')) {
+            if (btnFaves.classList.contains('selected')) {
                 noFaves.style.display = "none";
-                
+
                 btnFaves.classList.remove('selected');
                 projectItem.forEach(function (el) {
-                  
-                        el.style.display = "none";
-                        setTimeout(() => {
-                            el.style.display = "flex";
-                        }, 100);
+
+                    el.style.display = "none";
+                    setTimeout(() => {
+                        el.style.display = "flex";
+                    }, 100);
                 })
             } else {
                 btnFaves.classList.add('selected');
                 projectItem.forEach(function (el) {
                     if (!el.classList.contains('faved')) {
                         el.style.display = "none";
-                    
+
                     } else {
                         el.style.display = "none";
                         setTimeout(() => {
                             el.style.display = "flex";
                         }, 100);
-                    
-                       
+
+
                     }
                 })
             }
-        }) 
+        })
     }
 
     function ifnoFaves() {
