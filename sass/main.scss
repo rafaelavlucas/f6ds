@@ -19,9 +19,6 @@
 
     --iconHeart: url("/assets/heart-b.svg");
     --iconHeartFill: url("/assets/heartFill-b.svg");
-
-
-
 }
 
 [data-theme="dark"] {
@@ -43,8 +40,6 @@
 
     --iconHeart: url("/assets/heart-w.svg");
     --iconHeartFill: url("/assets/heartFill-w.svg");
-
-
 }
 
 // Fonts
@@ -895,12 +890,8 @@ body {
         background-color: var(--toolsBg);
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        height: 56px;
         overflow: hidden;
 
-        @include sm {
-            height: 48px;
-        }
     }
 
     &__toolLink {
@@ -911,10 +902,12 @@ body {
         justify-content: center;
         align-items: center;
         cursor: pointer;
+        height: 56px;
         transition: transform 0.3s ease, background 0.4s ease;
 
         @include sm {
             font-size: 12px;
+            height: 48px;
         }
 
 

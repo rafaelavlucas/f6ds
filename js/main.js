@@ -1,6 +1,6 @@
 window.onload = function (e) {
-  const baseUrl = 'https://myeverydayapps.com/directus/public/jc20/items'
-  let projects = []
+    const baseUrl = 'https://myeverydayapps.com/directus/public/jc20/items'
+    let projects = []
     let projectItem = "",
         faveProjects = [];
 
@@ -365,8 +365,8 @@ window.onload = function (e) {
 
 
     async function addProjects() {
-      const json = await fetch(`${baseUrl}/projects?fields=*.*`)
-      const dbProjects = await json.json()
+        const json = await fetch(`${baseUrl}/projects?fields=*.*`)
+        const dbProjects = await json.json()
         projects = dbProjects.data
         projects.forEach(function (el) {
 
@@ -401,17 +401,17 @@ window.onload = function (e) {
 
             document.querySelector(".projects").insertAdjacentHTML("beforeend", template);
 
-            el.tools.forEach(function (tool) {
-                let template2 = `
+            if (el.tools) {
+                el.tools.forEach(function (tool) {
+                    let template2 = `
                 <a class="projects__toolLink" href="${tool.link}" target="_blank">
                     <p class="projects__toolTitle">${tool.title}</p>
                     <p class="projects__toolName ${tool.name}">${tool.name}</p>
                 </a>`;
 
-                document.querySelector(`.projects__item[data-id="${el.id}"] .projects__tools`).insertAdjacentHTML("beforeend", template2);
-            })
-
-
+                    document.querySelector(`.projects__item[data-id="${el.id}"] .projects__tools`).insertAdjacentHTML("beforeend", template2);
+                })
+            }
         });
         saveFaves();
         search();

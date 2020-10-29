@@ -817,7 +817,7 @@ body {
   display: -ms-flexbox;
   display: flex;
   color: var(--text);
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 200;
   z-index: 2;
 }
@@ -855,8 +855,6 @@ body {
 }
 
 .projects__detailsContent {
-  font-size: 16px;
-  letter-spacing: 0.5px;
   margin: 0 32px;
   padding: 58px 0;
   position: relative;
@@ -954,7 +952,8 @@ body {
   cursor: pointer;
   margin-left: 32px;
   margin-bottom: 16px;
-  font-size: 18px;
+  font-size: 16px;
+  letter-spacing: 0.5px;
   font-weight: 400;
   display: block;
   width: -webkit-fit-content;
@@ -1056,14 +1055,7 @@ body {
   display: grid;
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
-  height: 56px;
   overflow: hidden;
-}
-
-@media screen and (max-width: 799px) {
-  .projects__tools {
-    height: 48px;
-  }
 }
 
 .projects__toolLink {
@@ -1080,6 +1072,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   cursor: pointer;
+  height: 56px;
   -webkit-transition: background 0.4s ease, -webkit-transform 0.3s ease;
   transition: background 0.4s ease, -webkit-transform 0.3s ease;
   transition: transform 0.3s ease, background 0.4s ease;
@@ -1089,6 +1082,7 @@ body {
 @media screen and (max-width: 799px) {
   .projects__toolLink {
     font-size: 12px;
+    height: 48px;
   }
 }
 
