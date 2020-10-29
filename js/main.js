@@ -1,6 +1,6 @@
 window.onload = function (e) {
-  const baseUrl = 'http://20.71.89.126:1337'
-  let projects = []
+    const baseUrl = 'http://104.40.222.218:1337'
+    let projects = []
     let projectItem = "",
         faveProjects = [];
 
@@ -365,8 +365,8 @@ window.onload = function (e) {
 
 
     async function addProjects() {
-      const json = await fetch(`${baseUrl}/projects?_sort=created_at:desc`)
-      const dbProjects = await json.json()
+        const json = await fetch(`${baseUrl}/projects?_sort=created_at:desc`)
+        const dbProjects = await json.json()
         projects = dbProjects
         projects.forEach(function (el) {
 
@@ -374,7 +374,7 @@ window.onload = function (e) {
             <div class="projects__item" data-id="${el.id}">
             <span class="projects__fave"></span>
     
-            <figure class="projects__thumb" style="background-color:${el.color}"> <img src="${baseUrl}${el.thumb.formats.large.url}" alt=""></figure>
+            <figure class="projects__thumb"> <img src="${baseUrl}${el.thumb.formats.large.url}" alt=""></figure>
             <span  class="projects__color" style="background-color:${el.color}"></span>
             <h2 class="projects__title">${el.client}</h2>
     
