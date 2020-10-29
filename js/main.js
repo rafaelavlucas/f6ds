@@ -1,5 +1,5 @@
 window.onload = function (e) {
-  const baseUrl = 'http://20.71.89.126:1337'
+  const baseUrl = 'https://myeverydayapps.com/directus/public/jc20/items'
   let projects = []
     let projectItem = "",
         faveProjects = [];
@@ -365,16 +365,16 @@ window.onload = function (e) {
 
 
     async function addProjects() {
-      const json = await fetch(`${baseUrl}/projects?_sort=created_at:desc`)
+      const json = await fetch(`${baseUrl}/projects?fields=*.*`)
       const dbProjects = await json.json()
-        projects = dbProjects
+        projects = dbProjects.data
         projects.forEach(function (el) {
 
             let template = `
             <div class="projects__item" data-id="${el.id}">
             <span class="projects__fave"></span>
     
-            <figure class="projects__thumb" style="background-color:${el.color}"> <img src="${baseUrl}${el.thumb.formats.large.url}" alt=""></figure>
+            <figure class="projects__thumb" style="background-color:${el.color}"> <img src="${el.thumb.data.full_url}" alt=""></figure>
             <span  class="projects__color" style="background-color:${el.color}"></span>
             <h2 class="projects__title">${el.client}</h2>
     
