@@ -6,7 +6,8 @@ window.onload = function (e) {
 
     const noFaves = document.querySelector('.message__noFaves'),
         noResults = document.querySelector('.message__noResults'),
-        btnFaves = document.querySelector('.faveBtn');
+        btnFaves = document.querySelector('.faveBtn'),
+        body = document.querySelector('body');
 
     // const projects = [{
     //         id: 0,
@@ -670,10 +671,29 @@ window.onload = function (e) {
         };
     }
 
+
+    // Intro page for authentication
+
+    function checkPassword() {
+        const passwordInput = document.getElementById("password"),
+            intro = document.querySelector(".intro");
+
+        passwordInput.addEventListener("keyup", function (event) {
+            intro.classList.add('checked');
+
+            body.style.overflowY = "visible";
+
+            setTimeout(() => {
+                intro.style.display = "none";
+            }, 1000);
+        })
+    }
+
     //////////////////
     // Call functions
     //////////////////
 
     addProjects();
     darkMode();
+    checkPassword();
 }
