@@ -1,5 +1,6 @@
 window.onload = function (e) {
-    const baseUrl = 'https://myeverydayapps.com/directus/public/jc20/items'
+    const baseUrl = 'https://myeverydayapps.com/directus/public/jc20'
+    var token = ''
     let projects = []
     let projectItem = "",
         faveProjects = [];
@@ -366,7 +367,12 @@ window.onload = function (e) {
 
 
     async function addProjects() {
-        const json = await fetch(`${baseUrl}/projects?fields=*.*`)
+        const json = await fetch(`${baseUrl}/items/projects?fields=*.*`, {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}` 
+          },
+        })
         const dbProjects = await json.json()
         projects = dbProjects.data
         projects.forEach(function (el) {
@@ -678,14 +684,36 @@ window.onload = function (e) {
         const passwordInput = document.getElementById("password"),
             intro = document.querySelector(".intro");
 
-        passwordInput.addEventListener("keyup", function (event) {
-            intro.classList.add('checked');
-
-            body.style.overflowY = "visible";
-
-            setTimeout(() => {
-                intro.style.display = "none";
-            }, 1000);
+        passwordInput.addEventListener("keyup", async function (event) {
+          event.preventDefault()
+          intro.querySelector('.input__error').classList.remove('showError')
+          if (event.code === 'Enter') {
+            const data = {
+              email: 'andre.dargains@gmail.com',
+              password: event.target.value
+            }
+            console.log(data);
+            const json = await fetch(`${baseUrl}/auth/authenticate`, {
+              method: 'post',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
+            })
+            if (json.status !== 200) {
+              const response = await json.json()
+              intro.querySelector('.input__error').classList.add('showError')
+              intro.querySelector('.input__error').innerText =  response.error.message
+            } else {
+              const response = await json.json()
+              token = response.data.token
+              intro.classList.add('checked');
+              
+              body.style.overflowY = "visible";
+              intro.style.display = "none";
+              addProjects();
+            }
+          }
         })
     }
 
@@ -693,7 +721,6 @@ window.onload = function (e) {
     // Call functions
     //////////////////
 
-    addProjects();
     darkMode();
     checkPassword();
 }
