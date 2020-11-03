@@ -368,10 +368,10 @@ window.onload = function (e) {
 
     async function addProjects() {
         const json = await fetch(`${baseUrl}/items/projects?fields=*.*`, {
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}` 
-          },
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
         })
         const dbProjects = await json.json()
         projects = dbProjects.data
@@ -478,6 +478,7 @@ window.onload = function (e) {
 
             if (currentProject.classList.contains('faved')) {
                 currentProject.classList.remove('faved');
+                currentProject.style.display = "none";
                 const targetIndex = [...getFaves].indexOf(e.currentTarget.closest('.projects__item').dataset.id)
                 getFaves.splice(targetIndex, 1);
                 getFaves = localStorage.setItem('projectFaves', JSON.stringify(getFaves));
@@ -685,35 +686,35 @@ window.onload = function (e) {
             intro = document.querySelector(".intro");
 
         passwordInput.addEventListener("keyup", async function (event) {
-          event.preventDefault()
-          intro.querySelector('.input__error').classList.remove('showError')
-          if (event.code === 'Enter') {
-            const data = {
-              email: 'andre.dargains@gmail.com',
-              password: event.target.value
+            event.preventDefault()
+            intro.querySelector('.input__error').classList.remove('showError')
+            if (event.code === 'Enter') {
+                const data = {
+                    email: 'andre.dargains@gmail.com',
+                    password: event.target.value
+                }
+                console.log(data);
+                const json = await fetch(`${baseUrl}/auth/authenticate`, {
+                    method: 'post',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                if (json.status !== 200) {
+                    const response = await json.json()
+                    intro.querySelector('.input__error').classList.add('showError')
+                    intro.querySelector('.input__error').innerText = response.error.message
+                } else {
+                    const response = await json.json()
+                    token = response.data.token
+                    intro.classList.add('checked');
+
+                    body.style.overflowY = "visible";
+                    intro.style.display = "none";
+                    addProjects();
+                }
             }
-            console.log(data);
-            const json = await fetch(`${baseUrl}/auth/authenticate`, {
-              method: 'post',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(data)
-            })
-            if (json.status !== 200) {
-              const response = await json.json()
-              intro.querySelector('.input__error').classList.add('showError')
-              intro.querySelector('.input__error').innerText =  response.error.message
-            } else {
-              const response = await json.json()
-              token = response.data.token
-              intro.classList.add('checked');
-              
-              body.style.overflowY = "visible";
-              intro.style.display = "none";
-              addProjects();
-            }
-          }
         })
     }
 
