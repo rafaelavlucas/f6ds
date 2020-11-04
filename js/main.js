@@ -8,6 +8,7 @@ window.onload = function (e) {
     const noFaves = document.querySelector('.message__noFaves'),
         noResults = document.querySelector('.message__noResults'),
         btnFaves = document.querySelector('.faveBtn'),
+        projectList = document.querySelector('.projects'),
         body = document.querySelector('body');
 
     // const projects = [{
@@ -477,8 +478,12 @@ window.onload = function (e) {
             getFaves = JSON.parse(localStorage.getItem('projectFaves'));
 
             if (currentProject.classList.contains('faved')) {
+
+                if (projectList.classList.contains('faveArea')) {
+                    currentProject.style.display = "none";
+                }
+
                 currentProject.classList.remove('faved');
-                currentProject.style.display = "none";
                 const targetIndex = [...getFaves].indexOf(e.currentTarget.closest('.projects__item').dataset.id)
                 getFaves.splice(targetIndex, 1);
                 getFaves = localStorage.setItem('projectFaves', JSON.stringify(getFaves));
@@ -512,13 +517,13 @@ window.onload = function (e) {
     // Filter faves
     function filterFaves() {
 
-
         btnFaves.addEventListener('click', function () {
             ifnoFaves();
 
             if (btnFaves.classList.contains('selected')) {
-                noFaves.style.display = "none";
 
+                projectList.classList.remove('faveArea');
+                noFaves.style.display = "none";
                 btnFaves.classList.remove('selected');
                 projectItem.forEach(function (el) {
 
@@ -529,6 +534,7 @@ window.onload = function (e) {
                 })
             } else {
                 btnFaves.classList.add('selected');
+                projectList.classList.add('faveArea');
                 projectItem.forEach(function (el) {
                     if (!el.classList.contains('faved')) {
                         el.style.display = "none";
