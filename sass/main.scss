@@ -820,6 +820,7 @@ body {
             object-fit: cover;
             position: absolute;
             filter: grayscale(100%);
+            border-radius: inherit;
         }
 
         &:before {

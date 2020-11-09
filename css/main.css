@@ -991,6 +991,7 @@ body {
   position: absolute;
   -webkit-filter: grayscale(100%);
           filter: grayscale(100%);
+  border-radius: inherit;
 }
 
 .projects__thumb:before {
