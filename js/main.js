@@ -366,7 +366,7 @@ window.onload = function (e) {
             if (!event.code || event.code === 'Enter') {
                 const data = {
                     email: 'andre.dargains@gmail.com',
-                    password: event.target.value
+                    password: passwordInput.value
                 }
                 console.log(data);
                 const json = await fetch(`${baseUrl}/auth/authenticate`, {
