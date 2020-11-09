@@ -333,29 +333,34 @@ window.onload = function (e) {
 
     async function checkPassword() {
         const passwordInput = document.getElementById("password"),
-            intro = document.querySelector(".intro");
-        const dbToken = localStorage.getItem("token")
+            intro = document.querySelector(".intro"),
+            inputArrow = document.querySelector(".intro__inputArrow"),
+            dbToken = localStorage.getItem("token");
+
         if (dbToken) {
-          const data = {
-            token: dbToken
-          }
-          const json = await fetch(`${baseUrl}/auth/refresh`, {
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-          })
-          const response = await json.json()
-          const newToken = response.data.token
-          localStorage.setItem('token', newToken);
-          intro.classList.add('checked');
-          token = newToken
-          body.style.overflowY = "visible";
-          intro.style.display = "none";
-          addProjects();
+            const data = {
+                token: dbToken
+            }
+            const json = await fetch(`${baseUrl}/auth/refresh`, {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            const response = await json.json()
+            const newToken = response.data.token
+            localStorage.setItem('token', newToken);
+            intro.classList.add('checked');
+            token = newToken
+            body.style.overflowY = "visible";
+            intro.style.display = "none";
+            addProjects();
         }
-        passwordInput.addEventListener("keyup", async function (event) {
+        passwordInput.addEventListener("keyup", enterPage);
+        inputArrow.addEventListener("click", enterPage);
+
+        async function enterPage(event) {
             event.preventDefault()
             intro.querySelector('.input__error').classList.remove('showError')
             if (event.code === 'Enter') {
@@ -371,6 +376,7 @@ window.onload = function (e) {
                     },
                     body: JSON.stringify(data)
                 })
+
                 if (json.status !== 200) {
                     const response = await json.json()
                     intro.querySelector('.input__error').classList.add('showError')
@@ -380,13 +386,13 @@ window.onload = function (e) {
                     token = response.data.token
                     localStorage.setItem('token', token);
                     intro.classList.add('checked');
-
                     body.style.overflowY = "visible";
                     intro.style.display = "none";
                     addProjects();
+
                 }
             }
-        })
+        }
     }
 
     //////////////////
