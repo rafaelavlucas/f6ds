@@ -26,7 +26,7 @@ window.onload = function (e) {
             <div class="projects__item" data-id="${el.id}">
             <span class="projects__fave"></span>
     
-            <figure class="projects__thumb" style="background-color:${el.color}"> <img src="${el.thumb.data.full_url}" alt=""></figure>
+            <figure class="projects__thumb"> <img src="${el.thumb.data.full_url}" alt=""></figure>
             <span  class="projects__color" style="background-color:${el.color}"></span>
             <h2 class="projects__title">${el.client}</h2>
     
