@@ -363,7 +363,7 @@ window.onload = function (e) {
         async function enterPage(event) {
             event.preventDefault()
             intro.querySelector('.input__error').classList.remove('showError')
-            if (event.code === 'Enter') {
+            if (!event.code || event.code === 'Enter') {
                 const data = {
                     email: 'andre.dargains@gmail.com',
                     password: event.target.value
