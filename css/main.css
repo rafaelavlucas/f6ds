@@ -317,6 +317,8 @@ body {
   padding-right: 5vw;
   max-width: 1920px;
   margin: 0 auto;
+  background: var(--bodyBg);
+  z-index: 2;
 }
 
 .nav {
@@ -1429,5 +1431,39 @@ body {
 
 .projects .faved .projects__fave:before {
   background-image: var(--iconHeartFill);
+}
+
+.footer {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 32px 5%;
+  background-color: var(--headerBg);
+  position: fixed;
+  bottom: 0;
+  z-index: -1;
+}
+
+@media screen and (max-width: 799px) {
+  .footer {
+    padding: 24px 5%;
+  }
+}
+
+.footer__text {
+  color: var(--text);
+  text-align: center;
+  opacity: 0.4;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  cursor: default;
+  padding: 16px;
 }
 /*# sourceMappingURL=main.css.map */

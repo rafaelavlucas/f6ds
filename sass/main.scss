@@ -288,6 +288,8 @@ body {
     @include margins();
     max-width: $maxWidthContent;
     margin: 0 auto;
+    background: var(--bodyBg);
+    z-index: 2;
 
 }
 
@@ -1225,4 +1227,31 @@ body {
     }
 
 
+}
+
+.footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 32px 5%;
+    background-color: var(--headerBg);
+    position: fixed;
+    bottom: 0;
+    z-index: -1;
+
+    @include sm {
+        padding: 24px 5%;
+    }
+
+    &__text {
+        color: var(--text);
+        text-align: center;
+        opacity: 0.4;
+        font-size: 14px;
+        letter-spacing: 0.2px;
+        cursor: default;
+        padding: 16px;
+
+    }
 }
