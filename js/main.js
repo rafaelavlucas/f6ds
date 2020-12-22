@@ -86,7 +86,7 @@ window.onload = function (e) {
         function selectText(event) {
             input = document.querySelector('.inputCopy');
 
-            input.value = event.currentTarget.innerHTML;
+            input.value = event.currentTarget.innerText;
             input.select();
             document.execCommand('copy');
 
