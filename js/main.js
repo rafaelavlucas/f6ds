@@ -74,6 +74,25 @@ window.onload = function (e) {
         openDrop();
     }
 
+    async function addTools() {
+      const json = await fetch(`${baseUrl}/items/tools?fields=*.*`, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+    })
+    const dbTools = await json.json()
+      tools = dbTools.data
+      tools.forEach(function (el) {
+        let template2 = `
+        <li class="drop__item">
+          <a href="${el.link}" target="_blank">${el.label}</a>
+        </li>`;
+
+        document.querySelector(`.drop__content`).insertAdjacentHTML("beforeend", template2);
+      })
+    }
+
     // Select and copy User and Password
     function copydetails() {
         const text = document.querySelectorAll('.projects__detail'),
@@ -356,6 +375,7 @@ window.onload = function (e) {
             body.style.overflowY = "visible";
             intro.style.display = "none";
             addProjects();
+            addTools();
         }
         passwordInput.addEventListener("keyup", enterPage);
         inputArrow.addEventListener("click", enterPage);
@@ -389,6 +409,7 @@ window.onload = function (e) {
                     body.style.overflowY = "visible";
                     intro.style.display = "none";
                     addProjects();
+                    addTools();
 
                 }
             }
