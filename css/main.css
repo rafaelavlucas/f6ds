@@ -406,6 +406,7 @@ main {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
+  z-index: 4;
 }
 
 .toggle {
