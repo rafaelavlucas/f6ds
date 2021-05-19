@@ -387,6 +387,7 @@ window.onload = function (e) {
         async function enterPage(event) {
             event.preventDefault()
             intro.querySelector('.input__error').classList.remove('showError')
+            if (projects.length) return
             if (!event.code || event.code === 'Enter') {
                 const data = {
                     email: 'andre.dargains@gmail.com',
