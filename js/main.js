@@ -368,14 +368,18 @@ window.onload = function (e) {
                 body: JSON.stringify(data)
             })
             const response = await json.json()
-            const newToken = response.data.token
-            localStorage.setItem('token', newToken);
-            intro.classList.add('checked');
-            token = newToken
-            body.style.overflowY = "visible";
-            intro.style.display = "none";
-            addProjects();
-            addTools();
+            if (response.data) {
+              const newToken = response.data.token
+              localStorage.setItem('token', newToken);
+              intro.classList.add('checked');
+              token = newToken
+              body.style.overflowY = "visible";
+              intro.style.display = "none";
+              addProjects();
+              addTools();
+            } else {
+              localStorage.removeItem('token', token);
+            }
         }
         passwordInput.addEventListener("keyup", enterPage);
         inputArrow.addEventListener("click", enterPage);
